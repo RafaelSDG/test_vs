@@ -1,0 +1,61 @@
+table medidas_InteraccionaTV
+	lineageTag: 8a986845-ff9a-4261-b8cb-f233348cea9d
+
+	measure 'Sum Videos' = DISTINCTCOUNT(InteraccionaTV_Hecho[interaccionaTV_video_id])
+		formatString: #,0
+		lineageTag: 4446b70a-954f-49af-a947-df842c15dc07
+
+	measure 'LYTD Numero Videos' =
+			
+			var _max1 =maxx(allselected('Date_DIM'),[Date])
+			var _max = date(year(_max1)-1,month(_max1),day(_max1))
+			var _min1 =minx(allselected('Date_DIM'),[Date])
+			var _min = date(year(_min1)-1,month(_min1),day(_min1))
+			return
+			CALCULATE(DISTINCTCOUNT('InteraccionaTV_Hecho'[interaccionaTV_video_id]),filter(all('Date_DIM'),'Date_DIM'[Date]<=_max && 'Date_DIM'[Date]>=_min))
+		formatString: #,0
+		lineageTag: bab4b92f-06a8-404d-974f-96f54309eed3
+
+	measure 'LYTD Numero Visualizaciones' = ```
+			
+			var _max1 =maxx(allselected('Date_DIM'),[Date])
+			var _max = date(year(_max1)-1,month(_max1),day(_max1))
+			var _min1 =minx(allselected('Date_DIM'),[Date])
+			var _min = date(year(_min1)-1,month(_min1),day(_min1))
+			return 
+			CALCULATE(SUM('InteraccionaTV_Hecho'[Views]),filter(all('Date_DIM'),'Date_DIM'[Date]<=_max && 'Date_DIM'[Date]>=_min))
+			```
+		formatString: #,0
+		lineageTag: 23c8ec28-b5c0-4441-a8b7-3b5df274b962
+
+	measure 'Comparision Num Videos' =
+			
+			
+			VAR denominator = medidas_InteraccionaTV[LYTD Numero Videos]
+			VAR numerator = medidas_InteraccionaTV[Sum Videos]
+			VAR difference = IF(ISBLANK(denominator)|| denominator = 0, "NaN", DIVIDE(numerator, denominator) - 1)
+			RETURN  IF(difference = "NaN", Comun[Mensaje No Data] & " en " & Comun[Previous Epoca], IF(difference > 0, "+", "") & ROUND(difference * 100, 0) & "% vs " & Comun[Previous Epoca])
+		lineageTag: a85afd14-b13b-4ba1-9cb8-d6e9c8cf9916
+
+	measure 'Comparision Visualizaciones' = ```
+			
+			
+			VAR denominator =  medidas_InteraccionaTV[LYTD Numero Visualizaciones] 
+			VAR numerator = SUM(InteraccionaTV_Hecho[Views])
+			VAR difference = IF(ISBLANK(denominator)|| denominator = 0, "NaN", DIVIDE(numerator, denominator) - 1)
+			RETURN  IF(difference = "NaN", Comun[Mensaje No Data] & " en " & Comun[Previous Epoca], IF(difference > 0, "+", "") & ROUND(difference * 100, 0) & "% vs " & Comun[Previous Epoca])
+			```
+		lineageTag: 877862b1-7bc5-4974-896b-ae6b428c3fab
+
+	partition medidas_InteraccionaTV = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,36 @@
+table Alias_Idioma_DIM
+	lineageTag: 683bc178-5d1e-421b-a999-b8fc711f6e72
+
+	column Cod_Idioma
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(2)
+		lineageTag: 2e10dc66-35cb-4a75-bef6-594131ba47f4
+		summarizeBy: none
+		sourceColumn: Cod_Idioma
+
+		annotation SummarizationSetBy = Automatic
+
+	column Alias
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(48)
+		lineageTag: 6b1fc285-c0a4-4dc1-8694-bbbca6d9721c
+		summarizeBy: none
+		sourceColumn: Alias
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Alias_Idioma_DIM = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("QECCDWH.acciona.int,60001", "DATA_DW"),
+				    KPIS_Alias_Idioma_DIM = Source{[Schema="KPIS",Item="Alias_Idioma_DIM"]}[Data]
+				in
+				    KPIS_Alias_Idioma_DIM
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,73 @@
+table InteraccionaTV_Videos_DIM
+	lineageTag: 85e9f3d6-4143-41c5-80ab-6924caf37f49
+
+	column Título
+		dataType: string
+		lineageTag: 17123621-36a8-440f-b67b-f58c3b50ea2b
+		summarizeBy: none
+		sourceColumn: Título
+
+		annotation SummarizationSetBy = Automatic
+
+	column Url
+		dataType: string
+		lineageTag: 55f90e21-d295-4cc2-93f2-3355ecc60d71
+		summarizeBy: none
+		sourceColumn: Url
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo de elemento'
+		dataType: string
+		lineageTag: cc834c49-3c0a-4389-bec3-46745f5f3ce3
+		summarizeBy: none
+		sourceColumn: Tipo de elemento
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ruta de acceso'
+		dataType: string
+		lineageTag: b05cdc3b-abf8-4570-bef7-e900d50ccd72
+		summarizeBy: none
+		sourceColumn: Ruta de acceso
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo de Video'
+		dataType: string
+		lineageTag: 6467920f-d735-48a0-b882-4d37c9866fe4
+		summarizeBy: none
+		sourceColumn: Tipo de Video
+
+		annotation SummarizationSetBy = Automatic
+
+	column interaccionaTV_video_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 62f677a3-b035-4eef-8a3f-6c6ef47a15a0
+		summarizeBy: none
+		sourceColumn: interaccionaTV_video_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_VIDEO_CORPORATIVO
+		dataType: string
+		lineageTag: 3bd7d752-4eb0-430d-8263-2eec8f187fe1
+		summarizeBy: none
+		sourceColumn: ID_VIDEO_CORPORATIVO
+
+		annotation SummarizationSetBy = Automatic
+
+	partition InteraccionaTV_Videos_DIM = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("QECCDWH.acciona.int,60001", "DATA_DW"),
+				    #"Filtered Rows" = Source{[Schema="KPIS",Item="InteraccionaTV_Videos_DIM"]}[Data]
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,368 @@
+table medidas_encuestas
+	lineageTag: 31bcd0e1-725e-4252-bf5f-c7a36dce7499
+
+	measure usuarios_sin_respuesta = SUM('Encuestas_Hecho'[INVITADOS] ) - SUM('Encuestas_Hecho'[Nº RESPUESTAS])
+		formatString: #,0
+		lineageTag: 0c840d76-e146-48db-b180-6a56e2332df9
+
+	measure 'Media Efectividad' = ```
+			
+			
+			VAR Maximo = MAX(Date_DIM[Date])
+			VAR Minimo = MIN(Date_DIM[Date])
+			
+			VAR Tabla = 
+			SUMMARIZE('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id],'Encuestas_Hecho'[Lanzamiento],'Encuestas_Hecho'[Cierre],
+			    "FLG",
+			        IF('Encuestas_Hecho'[Lanzamiento] >= Minimo && Encuestas_Hecho[Lanzamiento] <= Maximo , TRUE(),
+					IF('Encuestas_Hecho'[Cierre] >= Minimo && Encuestas_Hecho[Cierre] <= Maximo , TRUE(),
+			        IF('Encuestas_Hecho'[Lanzamiento] <= Minimo && Encuestas_Hecho[Cierre] >= Maximo , TRUE(),
+			
+					 FALSE()))
+			        )
+			    )
+			
+			VAR Tabla_filtrada = FILTER(Tabla, [FLG])
+			
+			VAR Filtro = FILTER('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id] IN DISTINCT(SELECTCOLUMNS(Tabla_filtrada, "Index", [encuesta_hecho_id])))
+			
+			VAR Calculo = CALCULATE(SUM(Encuestas_Hecho[Nº RESPUESTAS])/SUM('Encuestas_Hecho'[INVITADOS]), Filtro)
+			
+			return IF(ISBLANK(Calculo),0,Calculo)
+			```
+		formatString: #,0\ %;-#,0\ %;#,0\ %
+		lineageTag: 6300990d-4508-4ca1-b9f4-a1ac8f6a2838
+
+	measure Media_Efectividad_por_Encuesta = ```
+			
+			
+			VAR Maximo = MAX(Date_DIM[Date])
+			VAR Minimo = MIN(Date_DIM[Date])
+			
+			VAR Tabla = 
+			SUMMARIZE('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id],'Encuestas_Hecho'[Lanzamiento],'Encuestas_Hecho'[Cierre],
+			    "FLG",
+			        IF('Encuestas_Hecho'[Lanzamiento] >= Minimo && Encuestas_Hecho[Lanzamiento] <= Maximo , TRUE(),
+					IF('Encuestas_Hecho'[Cierre] >= Minimo && Encuestas_Hecho[Cierre] <= Maximo , TRUE(),
+			        IF('Encuestas_Hecho'[Lanzamiento] <= Minimo && Encuestas_Hecho[Cierre] >= Maximo , TRUE(),
+			
+					 FALSE()))
+			        )
+			    )
+			
+			VAR Tabla_filtrada = FILTER(Tabla, [FLG])
+			
+			VAR Filtro = FILTER('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id] IN DISTINCT(SELECTCOLUMNS(Tabla_filtrada, "encuesta_hecho_id", [encuesta_hecho_id])))
+			
+			VAR Calculo = CALCULATE(AVERAGEX(Encuestas_Hecho, DIVIDE(Encuestas_Hecho[Nº RESPUESTAS], Encuestas_Hecho[INVITADOS])), Filtro)
+			
+			return IF(ISBLANK(Calculo),0,Calculo)
+			
+			
+			
+			```
+		formatString: #,0.00\ %;-#,0.00\ %;#,0.00\ %
+		lineageTag: 5144f200-0318-4cec-a29a-3114540e864c
+
+	measure 'LYTD  Num Encuestas' = ```
+			
+			
+			
+			VAR MaximoAUX = MAX(Date_DIM[Date])
+			VAR Maximo = Date(YEAR(MaximoAUX)-1, MONTH(MaximoAUX), DAY(MaximoAUX))
+			VAR MinimoAUX = MIN(Date_DIM[Date])
+			VAR Minimo = Date(YEAR(MinimoAUX)-1, MONTH(MinimoAUX), DAY(MinimoAUX))
+			
+			VAR Tabla = 
+			SUMMARIZE('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id],'Encuestas_Hecho'[Lanzamiento],'Encuestas_Hecho'[Cierre],
+			    "FLG",
+			        IF('Encuestas_Hecho'[Lanzamiento] >= Minimo && Encuestas_Hecho[Lanzamiento] <= Maximo , TRUE(),
+					IF('Encuestas_Hecho'[Cierre] >= Minimo && Encuestas_Hecho[Cierre] <= Maximo , TRUE(),
+			        IF('Encuestas_Hecho'[Lanzamiento] <= Minimo && Encuestas_Hecho[Cierre] >= Maximo , TRUE(),
+			
+					 FALSE()))
+			        )
+			    )
+			
+			VAR Tabla_filtrada = FILTER(Tabla, [FLG])
+			
+			VAR Filtro = FILTER('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id] IN DISTINCT(SELECTCOLUMNS(Tabla_filtrada, "encuesta_hecho_id", [encuesta_hecho_id])))
+			
+			VAR Calculo = CALCULATE(DISTINCTCOUNT('Encuestas_Hecho'[encuesta_hecho_id]), Filtro)
+			
+			return IF(ISBLANK(Calculo),0,Calculo)
+			
+			
+			```
+		formatString: #,0
+		lineageTag: 5b062a01-5ba9-49ed-b036-3d1145574f4f
+
+	measure 'LYTD Sum of Invitados' = ```
+			
+			
+			VAR MaximoAUX = MAX(Date_DIM[Date])
+			VAR Maximo = Date(YEAR(MaximoAUX)-1, MONTH(MaximoAUX), DAY(MaximoAUX))
+			VAR MinimoAUX = MIN(Date_DIM[Date])
+			VAR Minimo = Date(YEAR(MinimoAUX)-1, MONTH(MinimoAUX), DAY(MinimoAUX))
+			
+			VAR Tabla = 
+			SUMMARIZE('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id],'Encuestas_Hecho'[Lanzamiento],'Encuestas_Hecho'[Cierre],
+			    "FLG",
+			        IF('Encuestas_Hecho'[Lanzamiento] >= Minimo && Encuestas_Hecho[Lanzamiento] <= Maximo , TRUE(),
+					IF('Encuestas_Hecho'[Cierre] >= Minimo && Encuestas_Hecho[Cierre] <= Maximo , TRUE(),
+			        IF('Encuestas_Hecho'[Lanzamiento] <= Minimo && Encuestas_Hecho[Cierre] >= Maximo , TRUE(),
+			
+					 FALSE()))
+			        )
+			    )
+			
+			VAR Tabla_filtrada = FILTER(Tabla, [FLG])
+			
+			VAR Filtro = FILTER('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id] IN DISTINCT(SELECTCOLUMNS(Tabla_filtrada, "encuesta_hecho_id", [encuesta_hecho_id])))
+			
+			VAR Calculo = CALCULATE(SUM('Encuestas_Hecho'[INVITADOS]), Filtro)
+			
+			return IF(ISBLANK(Calculo),0,Calculo)
+			
+			```
+		formatString: #,0
+		lineageTag: b9dcff06-a44f-4514-8852-aa3fb7fbfeb6
+
+	measure 'LYTD Porcentaje invitados vs ultimo periodo' = medidas_encuestas[Sum of Invitados]/'medidas_encuestas'[LYTD Sum of Invitados] - 1
+		formatString: #,0.00\ %;-#,0.00\ %;#,0.00\ %
+		lineageTag: a18c0c6b-0a4b-443e-9e1d-4e8fdff4c357
+
+	measure 'LYTD Sum of Respuestas' = ```
+			
+			VAR MaximoAUX = MAX(Date_DIM[Date])
+			VAR Maximo = Date(YEAR(MaximoAUX)-1, MONTH(MaximoAUX), DAY(MaximoAUX))
+			VAR MinimoAUX = MIN(Date_DIM[Date])
+			VAR Minimo = Date(YEAR(MinimoAUX)-1, MONTH(MinimoAUX), DAY(MinimoAUX))
+			
+			VAR Tabla = 
+			SUMMARIZE('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id],'Encuestas_Hecho'[Lanzamiento],'Encuestas_Hecho'[Cierre],
+			    "FLG",
+			        IF('Encuestas_Hecho'[Lanzamiento] >= Minimo && Encuestas_Hecho[Lanzamiento] <= Maximo , TRUE(),
+					IF('Encuestas_Hecho'[Cierre] >= Minimo && Encuestas_Hecho[Cierre] <= Maximo , TRUE(),
+			        IF('Encuestas_Hecho'[Lanzamiento] <= Minimo && Encuestas_Hecho[Cierre] >= Maximo , TRUE(),
+			
+					 FALSE()))
+			        )
+			    )
+			
+			VAR Tabla_filtrada = FILTER(Tabla, [FLG])
+			
+			VAR Filtro = FILTER('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id] IN DISTINCT(SELECTCOLUMNS(Tabla_filtrada, "encuesta_hecho_id", [encuesta_hecho_id])))
+			
+			VAR Calculo = CALCULATE(SUM('Encuestas_Hecho'[Nº RESPUESTAS]), Filtro)
+			
+			return IF(ISBLANK(Calculo),0,Calculo)
+			```
+		formatString: #,0
+		lineageTag: 2a33fba0-ba02-46d3-b2b6-5f252547d282
+
+	measure 'LYTD Porcentaje Respuestas vs ultimo periodo' = medidas_encuestas[Sum of Respuestas]/medidas_encuestas[LYTD Sum of Respuestas]-1
+		formatString: #,0.00\ %;-#,0.00\ %;#,0.00\ %
+		lineageTag: d225c1b6-f688-4268-942b-b9168ff94645
+
+	measure 'LYTD Porcentaje Efectividad vs ultimo periodo' = medidas_encuestas[Media Efectividad] / ('medidas_encuestas'[LYTD Sum of Respuestas]/'medidas_encuestas'[LYTD Sum of Invitados]) -1
+		formatString: #,0.00\ %;-#,0.00\ %;#,0.00\ %
+		lineageTag: 7439742a-68fc-474e-9228-d5f42fd1a618
+
+	measure 'Filtrar Encuesta Fechas' = ```
+			
+			
+			VAR Maximo = MAX(Date_DIM[Date])
+			VAR Minimo = MIN(Date_DIM[Date])
+			
+			VAR Tabla = 
+			SUMMARIZE('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id],'Encuestas_Hecho'[Lanzamiento],'Encuestas_Hecho'[Cierre],
+			    "FLG",
+			        IF('Encuestas_Hecho'[Lanzamiento] >= Minimo && Encuestas_Hecho[Lanzamiento] <= Maximo , TRUE(),
+					IF('Encuestas_Hecho'[Cierre] >= Minimo && Encuestas_Hecho[Cierre] <= Maximo , TRUE(),
+			        IF('Encuestas_Hecho'[Lanzamiento] <= Minimo && Encuestas_Hecho[Cierre] >= Maximo , TRUE(),
+			
+					 FALSE()))
+			        )
+			    )
+			
+			VAR Tabla_filtrada = FILTER(Tabla, [FLG])
+			
+			VAR Filtro = FILTER('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id] IN DISTINCT(SELECTCOLUMNS(Tabla_filtrada, "encuesta_hecho_id", [encuesta_hecho_id])))
+			
+			VAR Calculo = CALCULATE(DISTINCTCOUNT('Encuestas_Hecho'[encuesta_hecho_id]), Filtro)
+			
+			return IF(ISBLANK(Calculo),0,Calculo)
+			```
+		formatString: #,0
+		lineageTag: 84b2b982-4d25-4c58-aa18-818cc74e7477
+
+	measure 'Sum of Respuestas' = ```
+			
+			
+			VAR Maximo = MAX(Date_DIM[Date])
+			VAR Minimo = MIN(Date_DIM[Date])
+			
+			VAR Tabla = 
+			SUMMARIZE('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id],'Encuestas_Hecho'[Lanzamiento],'Encuestas_Hecho'[Cierre],
+			    "FLG",
+			        IF('Encuestas_Hecho'[Lanzamiento] >= Minimo && Encuestas_Hecho[Lanzamiento] <= Maximo , TRUE(),
+					IF('Encuestas_Hecho'[Cierre] >= Minimo && Encuestas_Hecho[Cierre] <= Maximo , TRUE(),
+			        IF('Encuestas_Hecho'[Lanzamiento] <= Minimo && Encuestas_Hecho[Cierre] >= Maximo , TRUE(),
+			
+					 FALSE()))
+			        )
+			    )
+			
+			VAR Tabla_filtrada = FILTER(Tabla, [FLG])
+			
+			VAR Filtro = FILTER('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id] IN DISTINCT(SELECTCOLUMNS(Tabla_filtrada, "encuesta_hecho_id", [encuesta_hecho_id])))
+			
+			VAR Calculo = CALCULATE(SUM('Encuestas_Hecho'[Nº RESPUESTAS]), Filtro)
+			
+			return IF(ISBLANK(Calculo),0,Calculo)
+			```
+		formatString: #,0
+		lineageTag: b9954b7d-bb88-4c08-abb1-372c3f7fea27
+
+	measure 'Sum of Invitados' = ```
+			
+			VAR Maximo = MAX(Date_DIM[Date])
+			VAR Minimo = MIN(Date_DIM[Date])
+			
+			VAR Tabla = 
+			SUMMARIZE('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id],'Encuestas_Hecho'[Lanzamiento],'Encuestas_Hecho'[Cierre],
+			    "FLG",
+			        IF('Encuestas_Hecho'[Lanzamiento] >= Minimo && Encuestas_Hecho[Lanzamiento] <= Maximo , TRUE(),
+					IF('Encuestas_Hecho'[Cierre] >= Minimo && Encuestas_Hecho[Cierre] <= Maximo , TRUE(),
+			        IF('Encuestas_Hecho'[Lanzamiento] <= Minimo && Encuestas_Hecho[Cierre] >= Maximo , TRUE(),
+			
+					 FALSE()))
+			        )
+			    )
+			
+			VAR Tabla_filtrada = FILTER(Tabla, [FLG])
+			
+			VAR Filtro = FILTER('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id] IN DISTINCT(SELECTCOLUMNS(Tabla_filtrada, "encuesta_hecho_id", [encuesta_hecho_id])))
+			
+			VAR Calculo = CALCULATE(SUM('Encuestas_Hecho'[INVITADOS]), Filtro)
+			
+			return IF(ISBLANK(Calculo),0,Calculo)
+			```
+		formatString: #,0
+		lineageTag: 9aa8a0d6-d337-44d5-9aa4-132dfa95c0ac
+
+	measure 'Encuestas abiertas' = ```
+			
+			
+			
+			VAR Maximo = MAX(Date_DIM[Date])
+			VAR Minimo = MIN(Date_DIM[Date])
+			
+			VAR Tabla = 
+			SUMMARIZE('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id],'Encuestas_Hecho'[Lanzamiento],'Encuestas_Hecho'[Cierre],
+			    "FLG",
+			        IF(Encuestas_Hecho[Lanzamiento] <= Maximo 
+			                 && ('Encuestas_Hecho'[Cierre] > Maximo || ISBLANK('Encuestas_Hecho'[Cierre])), TRUE(),
+			
+					 FALSE()
+			        )
+			    )
+			
+			VAR Tabla_filtrada = FILTER(Tabla, [FLG])
+			
+			VAR Filtro = FILTER('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id] IN DISTINCT(SELECTCOLUMNS(Tabla_filtrada, "encuesta_hecho_id", [encuesta_hecho_id])))
+			
+			VAR Calculo = CALCULATE(DISTINCTCOUNT('Encuestas_Hecho'[encuesta_hecho_id]), Filtro)
+			
+			return IF(ISBLANK(Calculo),0,Calculo)
+			```
+		formatString: #,0
+		lineageTag: 6c2a13b4-0dfb-4ada-a2de-4c79a5ad9218
+
+	measure 'Encuestas Cerradas' = medidas_encuestas[Sum Encuestas]-medidas_encuestas[Encuestas abiertas]
+		formatString: #,0
+		lineageTag: 53ee8f17-9cdf-4602-8114-761752454eeb
+
+	measure 'Sum Encuestas' = ```
+			
+			
+			
+			VAR Maximo = MAX(Date_DIM[Date])
+			VAR Minimo = MIN(Date_DIM[Date])
+			
+			VAR Tabla = 
+			SUMMARIZE('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id],'Encuestas_Hecho'[Lanzamiento],'Encuestas_Hecho'[Cierre],
+			    "FLG",
+			        IF('Encuestas_Hecho'[Lanzamiento] >= Minimo && Encuestas_Hecho[Lanzamiento] <= Maximo , TRUE(),
+					IF('Encuestas_Hecho'[Cierre] >= Minimo && Encuestas_Hecho[Cierre] <= Maximo , TRUE(),
+			        IF('Encuestas_Hecho'[Lanzamiento] <= Minimo && Encuestas_Hecho[Cierre] >= Maximo , TRUE(),
+			
+					 FALSE()))
+			        )
+			    )
+			
+			VAR Tabla_filtrada = FILTER(Tabla, [FLG])
+			
+			VAR Filtro = FILTER('Encuestas_Hecho', 'Encuestas_Hecho'[encuesta_hecho_id] IN DISTINCT(SELECTCOLUMNS(Tabla_filtrada, "encuesta_hecho_id", [encuesta_hecho_id])))
+			
+			VAR Calculo = CALCULATE(DISTINCTCOUNT('Encuestas_Hecho'[encuesta_hecho_id]), Filtro)
+			
+			return IF(ISBLANK(Calculo),0,Calculo)
+			```
+		formatString: #,0
+		lineageTag: 46e27746-c566-4630-bedd-593eb41f2f1a
+
+	measure 'Comparision Encuestas' =
+			
+			
+			VAR denominator = medidas_encuestas[LYTD  Num Encuestas]
+			VAR numerator = medidas_encuestas[Sum Encuestas]
+			VAR difference = IF(ISBLANK(denominator)|| denominator = 0, "NaN", DIVIDE(numerator, denominator) - 1)
+			RETURN  IF(difference = "NaN", Comun[Mensaje No Data] & " en " & Comun[Previous Epoca], IF(difference > 0, "+", "") & ROUND(difference * 100, 0) & "% vs " & Comun[Previous Epoca])
+		lineageTag: e1bb1bb0-03e1-4a71-9255-159babdc0f8a
+
+	measure 'Comparision Invitados' =
+			
+			
+			VAR denominator = medidas_encuestas[LYTD Sum of Invitados]
+			VAR numerator = medidas_encuestas[Sum of Invitados]
+			VAR difference = IF(ISBLANK(denominator)|| denominator = 0, "NaN", DIVIDE(numerator, denominator) - 1)
+			RETURN  IF(difference = "NaN", Comun[Mensaje No Data] & " en " & Comun[Previous Epoca], IF(difference > 0, "+", "") & ROUND(difference * 100, 0) & "% vs " & Comun[Previous Epoca])
+		lineageTag: 8e983b4d-5a99-4d49-821a-e662c9b911dd
+
+	measure 'Comparision Respuestas' =
+			
+			
+			VAR denominator = medidas_encuestas[LYTD Sum of Respuestas]
+			VAR numerator = medidas_encuestas[Sum of Respuestas]
+			VAR difference = IF(ISBLANK(denominator)|| denominator = 0, "NaN", DIVIDE(numerator, denominator) - 1)
+			RETURN  IF(difference = "NaN", Comun[Mensaje No Data] & " en " & Comun[Previous Epoca], IF(difference > 0, "+", "") & ROUND(difference * 100, 0) & "% vs " & Comun[Previous Epoca])
+		lineageTag: 5c057ec6-294a-453a-a002-851229dc5401
+
+	measure 'Rank Encuestas con Filtro Fecha' = ```
+			
+			
+			if(ISBLANK(SUMX(RELATEDTABLE(Encuestas_Hecho), [INVITADOS])),
+			BLANK(),
+			RANKX(
+			    filter(ALLSELECTED(Encuestas_Hecho),medidas_encuestas[Filtrar Encuesta Fechas]>0), [Nº RESPUESTAS],
+			    SUMX(RELATEDTABLE(Encuestas_Hecho), [Nº RESPUESTAS])
+			))
+			
+			```
+		formatString: 0
+		lineageTag: 86807d8c-0fb0-4afb-af56-5f0588d1e90b
+
+	partition medidas_encuestas = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

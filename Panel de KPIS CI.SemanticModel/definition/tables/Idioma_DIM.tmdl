@@ -1,0 +1,56 @@
+table Idioma_DIM
+	lineageTag: be906f62-a61e-4f9b-ae97-9a4cb5760793
+
+	column Cod_Idioma
+		dataType: string
+		lineageTag: b0bde3f9-360c-45bb-8154-7316236e88b7
+		summarizeBy: none
+		sourceColumn: Cod_Idioma
+
+		annotation SummarizationSetBy = Automatic
+
+	column Idioma_EN
+		dataType: string
+		lineageTag: e18af720-bead-47ff-958e-dcfaae5c3713
+		summarizeBy: none
+		sourceColumn: Idioma_EN
+
+		annotation SummarizationSetBy = Automatic
+
+	column Idioma_DE
+		dataType: string
+		lineageTag: c579ef56-09e3-4c69-8715-de8f6efc8f43
+		summarizeBy: none
+		sourceColumn: Idioma_DE
+
+		annotation SummarizationSetBy = Automatic
+
+	column Idioma_FR
+		dataType: string
+		lineageTag: 78b6cada-67df-4ff7-be4b-26e72a3d04cf
+		summarizeBy: none
+		sourceColumn: Idioma_FR
+
+		annotation SummarizationSetBy = Automatic
+
+	column Idioma
+		dataType: string
+		lineageTag: 61543241-4764-439f-8efa-5890b49997ee
+		summarizeBy: none
+		sourceColumn: Idioma
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Idioma_DIM = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("QECCDWH.acciona.int,60001", "DATA_DW"),
+				    #"Changed Type" = Source{[Schema="KPIS",Item="Idioma_DIM"]}[Data]
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

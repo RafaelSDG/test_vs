@@ -1,0 +1,39 @@
+table Campanas_Email_Pais_Hecho
+	lineageTag: ae16b1f7-f30b-4b17-a2e9-6e0bd940a132
+
+	column pais_id
+		dataType: string
+		lineageTag: aa5cf522-2b2d-46b8-8354-c96a89574e87
+		summarizeBy: none
+		sourceColumn: pais_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column campanas_email_hecho_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 034a086d-25ea-482f-9478-25042b02a36d
+		summarizeBy: none
+		sourceColumn: campanas_email_hecho_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Campanas_Email_Pais_Hecho = m
+		mode: import
+		source =
+				let
+				    Source = Campanas_Email_Hecho,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"Country", "campanas_email_hecho_id"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"Country", "pais_id"}}),
+				    #"Split Column by Delimiter" = Table.ExpandListColumn(Table.TransformColumns(#"Renamed Columns", {{"pais_id", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "pais_id"),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"pais_id", type text}}),
+				    #"Split Column by Delimiter1" = Table.ExpandListColumn(Table.TransformColumns(#"Changed Type", {{"pais_id", Splitter.SplitTextByDelimiter("&", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "pais_id"),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter1",{{"pais_id", type text}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Changed Type1",{{"pais_id", Text.Trim, type text}})
+				in
+				    #"Trimmed Text"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

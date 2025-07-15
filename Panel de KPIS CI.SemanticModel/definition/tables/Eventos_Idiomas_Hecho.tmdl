@@ -1,0 +1,35 @@
+table Eventos_Idiomas_Hecho
+	lineageTag: 9f10127e-ae22-4d17-af4b-f08ae61b1c9b
+
+	column evento_hecho_id
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 6f749c31-8cc5-44da-b6c4-cf4812ad5f50
+		summarizeBy: none
+		sourceColumn: evento_hecho_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cod_idioma
+		dataType: string
+		sourceProviderType: varchar(255)
+		lineageTag: db69e683-ba84-4e8e-98dd-f28fbb68337b
+		summarizeBy: none
+		sourceColumn: Cod_idioma
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Eventos_Idiomas_Hecho = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("QECCDWH.acciona.int,60001", "DATA_DW"),
+				    KPIS_Eventos_Idiomas_Hecho = Source{[Schema="KPIS",Item="Eventos_Idiomas_Hecho"]}[Data]
+				in
+				    KPIS_Eventos_Idiomas_Hecho
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

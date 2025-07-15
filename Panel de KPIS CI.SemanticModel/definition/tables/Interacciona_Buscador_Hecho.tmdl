@@ -1,0 +1,89 @@
+table Interacciona_Buscador_Hecho
+	lineageTag: 007a7f1f-fe55-445f-89ce-45b40d0c8058
+
+	column Año-Mes
+		dataType: string
+		lineageTag: ac9e7efc-69da-4080-a395-93412c3fc913
+		summarizeBy: none
+		sourceColumn: Año-Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Term
+		dataType: string
+		lineageTag: 6eb535ea-96d8-47b5-a740-e8607c8df025
+		summarizeBy: none
+		sourceColumn: Term
+
+		annotation SummarizationSetBy = Automatic
+
+	column Searches
+		dataType: int64
+		formatString: #,0
+		lineageTag: 72b5e793-0db7-404a-be9e-0acde65e475b
+		summarizeBy: sum
+		sourceColumn: Searches
+
+		annotation SummarizationSetBy = Automatic
+
+	column Results
+		dataType: int64
+		formatString: 0
+		lineageTag: 2cb27623-4473-440a-b627-87f807c94153
+		summarizeBy: sum
+		sourceColumn: Results
+
+		annotation SummarizationSetBy = Automatic
+
+	column Clicks
+		dataType: int64
+		formatString: 0
+		lineageTag: c300572c-bc07-48ba-9345-492c0a533f74
+		summarizeBy: sum
+		sourceColumn: Clicks
+
+		annotation SummarizationSetBy = Automatic
+
+	column Position
+		dataType: int64
+		formatString: 0
+		lineageTag: 192a7d2c-4bfc-405a-bd2c-bbc99fe75b5d
+		summarizeBy: sum
+		sourceColumn: Position
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fecha primer dia'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 50041dbb-96d6-4172-b8c9-97a1318ab218
+		summarizeBy: none
+		sourceColumn: Fecha primer dia
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: da5d7320-556f-4780-b01f-47112e3cf23f
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Interacciona_Buscador_Hecho = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("QECCDWH.acciona.int,60001", "DATA_DW"),
+				    #"Filtered Rows" = Source{[Schema="KPIS",Item="Interacciona_Buscador_Hecho"]}[Data],
+				    #"Added Index" = Table.AddIndexColumn(#"Filtered Rows", "Index", 0, 1, Int64.Type)
+				in
+				    #"Added Index"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

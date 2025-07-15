@@ -1,0 +1,237 @@
+table medidas_emails
+	lineageTag: 16bf4ebf-dbd2-470c-ad50-b561a51912de
+
+	measure 'Sum Emails' = DISTINCTCOUNT(Campanas_Email_Hecho[campanas_email_hecho_id])
+		formatString: #,0
+		lineageTag: c586ad01-267f-4d8b-8b2b-e470fc5c723b
+
+	measure 'Sum Emails Segmented' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Campanas_Email_Hecho[campanas_email_hecho_id]),
+			    Campanas_Email_Hecho[Type] = "segmented"
+			)
+		formatString: #,0
+		lineageTag: 9f15f245-98fd-4172-a4c2-0257d4e8bb4f
+
+	measure 'Sum Emails Global' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Campanas_Email_Hecho[campanas_email_hecho_id]),
+			    Campanas_Email_Hecho[Type] = "Global"
+			)
+		formatString: #,0
+		lineageTag: bd9bdbfd-4466-4a3c-9332-ab740d69665a
+
+	measure 'Efectividad Min-Max' = ```
+			
+			VAR MinEfectividad = MIN('Campanas_Email_Hecho'[ratio efectividad])
+			VAR MaxEfectividad = MAX('Campanas_Email_Hecho'[ratio efectividad])
+			RETURN
+			    "[" & FORMAT(MinEfectividad, "0%") & ", " & FORMAT(MaxEfectividad, "0%") & "]"
+			
+			```
+		lineageTag: 71490e3e-067c-42dc-ba91-125a34605074
+
+	measure 'LYTD Numero Emails' =
+			
+			var _max1 =maxx(allselected('Date_DIM'),[Date])
+			var _max = date(year(_max1)-1,month(_max1),day(_max1))
+			var _min1 =minx(allselected('Date_DIM'),[Date])
+			var _min = date(year(_min1)-1,month(_min1),day(_min1))
+			return
+			CALCULATE(DISTINCTCOUNT('Campanas_Email_Hecho'[campanas_email_hecho_id]),filter(all('Date_DIM'),'Date_DIM'[Date]<=_max && 'Date_DIM'[Date]>=_min))
+		formatString: #,0
+		lineageTag: 06935781-3fdf-434b-bbf8-9d2bcb8f4214
+
+	measure 'LYTD Numero Emails Global' =
+			
+			var _max1 =maxx(allselected('Date_DIM'),[Date])
+			var _max = date(year(_max1)-1,month(_max1),day(_max1))
+			var _min1 =minx(allselected('Date_DIM'),[Date])
+			var _min = date(year(_min1)-1,month(_min1),day(_min1))
+			return
+			CALCULATE(
+			    DISTINCTCOUNT(Campanas_Email_Hecho[campanas_email_hecho_id]),
+			    Campanas_Email_Hecho[Type] = "Global"
+			    ,filter(all('Date_DIM'),'Date_DIM'[Date]<=_max && 'Date_DIM'[Date]>=_min)
+			)
+		formatString: #,0
+		lineageTag: fcbe7368-c314-4e98-9034-74e7012363e4
+
+	measure 'LYTD Numero Emails Segmented' =
+			
+			var _max1 =maxx(allselected('Date_DIM'),[Date])
+			var _max = date(year(_max1)-1,month(_max1),day(_max1))
+			var _min1 =minx(allselected('Date_DIM'),[Date])
+			var _min = date(year(_min1)-1,month(_min1),day(_min1))
+			return
+			CALCULATE(
+			    DISTINCTCOUNT(Campanas_Email_Hecho[campanas_email_hecho_id]),
+			    Campanas_Email_Hecho[Type] = "segmented"
+			    ,filter(all('Date_DIM'),'Date_DIM'[Date]<=_max && 'Date_DIM'[Date]>=_min)
+			)
+		formatString: #,0
+		lineageTag: 3d8fd702-c64b-428a-91ce-c0ec79633ccf
+
+	measure 'LYTD Media Efectividad' =
+			
+			var _max1 =maxx(allselected('Date_DIM'),[Date])
+			var _max = date(year(_max1)-1,month(_max1),day(_max1))
+			var _min1 =minx(allselected('Date_DIM'),[Date])
+			var _min = date(year(_min1)-1,month(_min1),day(_min1))
+			return
+			CALCULATE(calculate(AVERAGEX(Campanas_Email_Hecho,Campanas_Email_Hecho[Abridores]/Campanas_Email_Hecho[Recibidos])),filter(all('Date_DIM'),'Date_DIM'[Date]<=_max && 'Date_DIM'[Date]>=_min))
+		formatString: 0\ %;-0\ %;0\ %
+		lineageTag: 296fbc3c-9cc5-4700-9347-8421c49c6154
+
+	measure 'LYTD Numero Destinatarios' =
+			
+			var _max1 =maxx(allselected('Date_DIM'),[Date])
+			var _max = date(year(_max1)-1,month(_max1),day(_max1))
+			var _min1 =minx(allselected('Date_DIM'),[Date])
+			var _min = date(year(_min1)-1,month(_min1),day(_min1))
+			return
+			CALCULATE(SUM('Campanas_Email_Hecho'[Destinatarios]),filter(all('Date_DIM'),'Date_DIM'[Date]<=_max && 'Date_DIM'[Date]>=_min))
+		formatString: #,0
+		lineageTag: c3d54747-3fe6-49f0-a966-8ea1c788866d
+
+	measure 'LYTD Numero Abridores' =
+			
+			var _max1 =maxx(allselected('Date_DIM'),[Date])
+			var _max = date(year(_max1)-1,month(_max1),day(_max1))
+			var _min1 =minx(allselected('Date_DIM'),[Date])
+			var _min = date(year(_min1)-1,month(_min1),day(_min1))
+			return
+			CALCULATE(SUM('Campanas_Email_Hecho'[Abridores]),filter(all('Date_DIM'),'Date_DIM'[Date]<=_max && 'Date_DIM'[Date]>=_min))
+		formatString: #,0
+		lineageTag: 657e15e3-5c8f-4750-b493-fb08348a478b
+
+	measure 'LYTD Numero Recibidos' =
+			
+			var _max1 =maxx(allselected('Date_DIM'),[Date])
+			var _max = date(year(_max1)-1,month(_max1),day(_max1))
+			var _min1 =minx(allselected('Date_DIM'),[Date])
+			var _min = date(year(_min1)-1,month(_min1),day(_min1))
+			return
+			CALCULATE(SUM('Campanas_Email_Hecho'[Recibidos]),filter(all('Date_DIM'),'Date_DIM'[Date]<=_max && 'Date_DIM'[Date]>=_min))
+		formatString: #,0
+		lineageTag: 0557a6cd-a62f-49c1-bae5-1178b5af9fcc
+
+	measure 'LYTD Rango Efectividad' = ```
+			
+			VAR _max1 = MAXX(ALLSELECTED('Date_DIM'), [Date])
+			VAR _max = DATE(YEAR(_max1) - 1, MONTH(_max1), DAY(_max1))
+			VAR _min1 = MINX(ALLSELECTED('Date_DIM'), [Date])
+			VAR _min = DATE(YEAR(_min1) - 1, MONTH(_min1), DAY(_min1))
+			
+			VAR MinEfectividad = 
+			    CALCULATE(
+			        MIN('Campanas_Email_Hecho'[ratio efectividad]),
+			        FILTER(ALL('Date_DIM'), 'Date_DIM'[Date] <= _max && 'Date_DIM'[Date] >= _min)
+			    )
+			
+			VAR MaxEfectividad = 
+			    CALCULATE(
+			        MAX('Campanas_Email_Hecho'[ratio efectividad]),
+			        FILTER(ALL('Date_DIM'), 'Date_DIM'[Date] <= _max && 'Date_DIM'[Date] >= _min)
+			    )
+			
+			RETURN
+			    "[" & FORMAT(MinEfectividad, "0.00%") & ", " & FORMAT(MaxEfectividad, "0.00%") & "]"
+			
+			```
+		lineageTag: 81081920-9758-4497-9fe0-afd2c9eba057
+
+	measure 'Tasa efectividad media' = calculate(AVERAGEX(Campanas_Email_Hecho,Campanas_Email_Hecho[Abridores]/Campanas_Email_Hecho[Recibidos]))
+		formatString: 0\ %;-0\ %;0\ %
+		lineageTag: 2c5007d5-c5dc-439b-a4e2-a4aff8c97b1c
+
+	measure 'Comparision Sum Emails' =
+			
+			
+			VAR denominator = medidas_emails[LYTD Numero Emails]
+			VAR numerator = medidas_emails[Sum Emails]
+			VAR difference = IF(ISBLANK(denominator)|| denominator = 0, "NaN", DIVIDE(numerator, denominator) - 1)
+			RETURN  IF(difference = "NaN", Comun[Mensaje No Data] & " en " & Comun[Previous Epoca], IF(difference > 0, "+", "") & ROUND(difference * 100, 0) & "% vs " & Comun[Previous Epoca])
+		lineageTag: e57eae6d-3b9d-4707-b805-41daae95503a
+
+	measure 'Comparision Recibidos Emails' =
+			
+			
+			VAR denominator = medidas_emails[LYTD Numero Recibidos]
+			VAR numerator = SUM(Campanas_Email_Hecho[Recibidos])
+			VAR difference = IF(ISBLANK(denominator)|| denominator = 0, "NaN", DIVIDE(numerator, denominator) - 1)
+			RETURN  IF(difference = "NaN", Comun[Mensaje No Data] & " en " & Comun[Previous Epoca], IF(difference > 0, "+", "") & ROUND(difference * 100, 0) & "% vs " & Comun[Previous Epoca])
+		lineageTag: a9e1b4f3-d141-4cee-bd54-447b42f7af85
+
+	measure 'Comparision Abridores Emails' =
+			
+			
+			VAR denominator = medidas_emails[LYTD Numero Abridores]
+			VAR numerator = SUM(Campanas_Email_Hecho[Abridores])
+			VAR difference = IF(ISBLANK(denominator)|| denominator = 0, "NaN", DIVIDE(numerator, denominator) - 1)
+			RETURN  IF(difference = "NaN", Comun[Mensaje No Data] & " en " & Comun[Previous Epoca], IF(difference > 0, "+", "") & ROUND(difference * 100, 0) & "% vs " & Comun[Previous Epoca])
+		lineageTag: 451e4104-f24c-444f-afe6-a2d776e414a1
+
+	measure 'Comparision Efectividad Emails' =
+			
+			
+			VAR denominator = medidas_emails[LYTD Media Efectividad]
+			VAR numerator = medidas_emails[Tasa efectividad media]
+			VAR difference = IF(ISBLANK(denominator)|| denominator = 0, "NaN", DIVIDE(numerator, denominator) - 1)
+			RETURN  IF(difference = "NaN", Comun[Mensaje No Data] & " en " & Comun[Previous Epoca], IF(difference > 0, "+", "") & ROUND(difference * 100, 0) & "% vs " & Comun[Previous Epoca])
+		lineageTag: e9bc91a9-e5cd-435a-99b0-bd5fe5c55bda
+
+	measure 'Comparision rango Efectividad' = ```
+			
+			
+			VAR MinEfectividad = MIN('Campanas_Email_Hecho'[ratio efectividad])
+			VAR MaxEfectividad = MAX('Campanas_Email_Hecho'[ratio efectividad])
+			VAR _max1 = MAXX(ALLSELECTED('Date_DIM'), [Date])
+			VAR _max = DATE(YEAR(_max1) - 1, MONTH(_max1), DAY(_max1))
+			VAR _min1 = MINX(ALLSELECTED('Date_DIM'), [Date])
+			VAR _min = DATE(YEAR(_min1) - 1, MONTH(_min1), DAY(_min1))
+			
+			VAR MinEfectividadLYTD = 
+			    CALCULATE(
+			        MIN('Campanas_Email_Hecho'[ratio efectividad]),
+			        FILTER(ALL('Date_DIM'), 'Date_DIM'[Date] <= _max && 'Date_DIM'[Date] >= _min)
+			    )
+			
+			VAR MaxEfectividadLYTD = 
+			    CALCULATE(
+			        MAX('Campanas_Email_Hecho'[ratio efectividad]),
+			        FILTER(ALL('Date_DIM'), 'Date_DIM'[Date] <= _max && 'Date_DIM'[Date] >= _min)
+			    )
+			
+			VAR denominator = medidas_emails[LYTD Numero Abridores]
+			VAR numerator = SUM(Campanas_Email_Hecho[Abridores])
+			
+			VAR differenceMin = IF(ISBLANK(MinEfectividadLYTD) || denominator = 0, "NaN", DIVIDE(MinEfectividad, MinEfectividadLYTD) - 1)
+			VAR differenceMax = IF(ISBLANK(MaxEfectividadLYTD) || denominator = 0, "NaN", DIVIDE(MaxEfectividad, MaxEfectividadLYTD) - 1)
+			
+			var differenceMinString = IF(differenceMin = "NaN", "Sin datos", IF(differenceMin>0 , "+","") & FORMAT(differenceMin, "0%"))
+			var differenceMaxString = IF(differenceMax = "NaN", "Sin datos", IF(differenceMax>0 , "+","") & FORMAT(differenceMax, "0%"))
+			
+			RETURN
+			    "[" & differenceMinString & ", " & differenceMaxString & "]" & " vs " & Comun[Previous Epoca]
+			```
+		lineageTag: 6dc77157-fdd1-405b-88b2-6a794d80bf7c
+
+	measure 'Tasa de efectividad' = calculate(sum(Campanas_Email_Hecho[Abridores])/sum(Campanas_Email_Hecho[Recibidos]))
+		formatString: 0\ %;-0\ %;0\ %
+		lineageTag: e547072c-e227-4c49-b8d7-f502ddd32d39
+
+	partition medidas_emails = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

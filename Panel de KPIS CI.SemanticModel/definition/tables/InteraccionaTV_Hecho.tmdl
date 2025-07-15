@@ -1,0 +1,149 @@
+table InteraccionaTV_Hecho
+	lineageTag: 211c8627-4ba3-42a6-a34a-1d77868812ad
+
+	column Fecha_publicacion_DATE
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: deebcea0-daaa-475c-a486-f509301f1d74
+		summarizeBy: none
+		sourceColumn: Fecha_publicacion_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Views
+		dataType: int64
+		formatString: #,0
+		lineageTag: 46bbc006-38c1-4acc-9391-091d23f0b8ba
+		summarizeBy: sum
+		sourceColumn: Views
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisibleInteraccionatv
+		dataType: string
+		lineageTag: fbadc68c-c486-41e3-a7e0-c9b2b1c60727
+		summarizeBy: none
+		sourceColumn: VisibleInteraccionatv
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Número de Me gusta'
+		dataType: int64
+		formatString: 0
+		lineageTag: cc08c5ab-d75c-4a4e-8c6f-2fc093c09370
+		summarizeBy: sum
+		sourceColumn: Número de Me gusta
+
+		annotation SummarizationSetBy = Automatic
+
+	column Added_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: aa020c83-5ce0-4297-ad37-881ae3a6d471
+		summarizeBy: none
+		sourceColumn: Added_at
+
+		variation Variation
+			isDefault
+			relationship: 4ab4bf53-5699-4c61-b956-23a8ea0fde85
+			defaultHierarchy: LocalDateTable_06dbb84b-c0b0-4b6b-aa28-e29856b18972.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastSync
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 85ae502e-befb-4571-bf7c-54d72bc0736c
+		summarizeBy: none
+		sourceColumn: LastSync
+
+		variation Variation
+			isDefault
+			relationship: 83876087-b9bf-40fe-b624-8dbcbb795267
+			defaultHierarchy: LocalDateTable_e007160d-4b88-4a2b-aa04-c701d1854ff5.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Idioma
+		dataType: string
+		lineageTag: b76f05cf-4f8d-4be8-94a0-4ceb64c844c6
+		summarizeBy: none
+		sourceColumn: Idioma
+
+		annotation SummarizationSetBy = Automatic
+
+	column interacciona_tv_hecho_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 1c186fcc-0438-4deb-8c67-25420e6a78d0
+		summarizeBy: none
+		sourceColumn: interacciona_tv_hecho_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column interaccionaTV_video_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 3a2493e2-84c7-4f40-a5dd-1eb8adba4ed0
+		summarizeBy: none
+		sourceColumn: interaccionaTV_video_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fecha_cargamento
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6cacf502-0547-4518-816f-e3a084e6f2a2
+		summarizeBy: none
+		sourceColumn: Fecha_cargamento
+
+		variation Variation
+			isDefault
+			relationship: 878fff80-bb89-41d1-8383-76271116b3f1
+			defaultHierarchy: LocalDateTable_ed8b160f-f69c-40ed-9771-b1240ec2276c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column filename
+		dataType: string
+		lineageTag: 9a2a84ee-30b5-44ad-a32c-7e5c790120a0
+		summarizeBy: none
+		sourceColumn: filename
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 1b9a2d91-3ebc-4b13-835b-b905cad1e869
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	partition InteraccionaTV_Hecho = m
+		mode: import
+		source = ```
+				let
+				    Source = Sql.Database("QECCDWH.acciona.int,60001", "DATA_DW"),
+				    #"Filtered Rows" = Source{[Schema="KPIS",Item="InteraccionaTV_Hecho"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(#"Filtered Rows",{{"Fecha_publicacion", "Fecha_publicacion_DATE"}}),
+				    #"Sorted Rows" = Table.Sort(#"Renamed Columns",{{"Views", Order.Descending}}),
+				    #"Added Custom" = Table.AddColumn(#"Sorted Rows", "Ordenamiento_por_Views", each 
+				    List.PositionOf(
+				        Table.Column(#"Sorted Rows", "Views"),
+				        [Views]
+				    ) + 1
+				),
+				    #"Added Index" = Table.AddIndexColumn(#"Added Custom", "Index", 1, 1, Int64.Type),
+				    #"Removed Columns" = Table.RemoveColumns(#"Added Index",{"Ordenamiento_por_Views"})
+				in
+				    #"Removed Columns"
+				```
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

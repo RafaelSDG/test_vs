@@ -1,0 +1,126 @@
+table medidas_puntos_encuentro
+	lineageTag: 75c87ecd-8778-4354-8bb0-805cbbeea97b
+
+	measure 'Total Encuentros' = DISTINCTCOUNT(Eventos_Hecho[evento_hecho_id])
+		formatString: #,0
+		lineageTag: 031910c6-e24e-4550-aa6a-d5bc42108956
+
+	measure 'LYTD Total Encuentros' =
+			
+			var _max1 =maxx(allselected('Date_DIM'),[Date])
+			var _max = date(year(_max1)-1,month(_max1),day(_max1))
+			var _min1 =minx(allselected('Date_DIM'),[Date])
+			var _min = date(year(_min1)-1,month(_min1),day(_min1))
+			return
+			CALCULATE(DISTINCTCOUNT('Eventos_Hecho'[evento_hecho_id]),filter(all('Date_DIM'),'Date_DIM'[Date]<=_max && 'Date_DIM'[Date]>=_min))
+		formatString: #,0
+		lineageTag: 9b197f6b-e51f-43fa-9007-32b10e8e1516
+
+	measure 'Visualizaciones Unicas Online' =
+			
+			var visualizaciones = calculate(SUM(Eventos_hecho[VisualizacionesUnicas0]))
+			return visualizaciones
+		formatString: #,0
+		lineageTag: 80269e2e-4982-4174-87a9-4995cb0ffbda
+
+	measure 'Total Asistentes Presenciales' = SUM(Eventos_Hecho[Asistentes presenciales])
+		formatString: #,0
+		lineageTag: 185e6bc2-e218-4664-b938-34786cade45b
+
+	measure 'Total Asistentes' = medidas_puntos_encuentro[Total Asistentes Presenciales] + medidas_puntos_encuentro[Visualizaciones Unicas Online]
+		formatString: #,0
+		lineageTag: 4ff877b7-29a4-4b35-8f72-f52290a4ea86
+
+	measure 'LYTD Total Asistentes Presenciales' =
+			
+			var _max1 =maxx(allselected('Date_DIM'),[Date])
+			var _max = date(year(_max1)-1,month(_max1),day(_max1))
+			var _min1 =minx(allselected('Date_DIM'),[Date])
+			var _min = date(year(_min1)-1,month(_min1),day(_min1))
+			return
+			CALCULATE(SUM('Eventos_Hecho'[Asistentes presenciales]),filter(all('Date_DIM'),'Date_DIM'[Date]<=_max && 'Date_DIM'[Date]>=_min))
+		formatString: #,0
+		lineageTag: 9ac973cd-d2a2-4f10-a598-793dd3f90b74
+
+	measure 'LYTD Total Visualizaciones Unicas Online' =
+			
+			var _max1 =maxx(allselected('Date_DIM'),[Date])
+			var _max = date(year(_max1)-1,month(_max1),day(_max1))
+			var _min1 =minx(allselected('Date_DIM'),[Date])
+			var _min = date(year(_min1)-1,month(_min1),day(_min1))
+			return
+			CALCULATE(SUM('Eventos_Hecho'[VISUALIZACIONES UNICAS]),filter(all('Date_DIM'),'Date_DIM'[Date]<=_max && 'Date_DIM'[Date]>=_min))
+		formatString: #,0
+		lineageTag: 3768d229-7126-4cdb-b47f-d88f1b793b9c
+
+	measure 'LYTD Total Asistentes' = medidas_puntos_encuentro[LYTD Total Asistentes Presenciales] + medidas_puntos_encuentro[LYTD Total Visualizaciones Unicas Online]
+		formatString: #,0
+		lineageTag: d4816ee6-3102-4e08-8fd3-bacb48adb50c
+
+	measure 'Media de Asistentes por Evento' = (SUM(Eventos_Hecho[Asistentes presenciales]) + SUM(Eventos_Hecho[VISUALIZACIONES UNICAS]))/medidas_puntos_encuentro[Total Encuentros]
+		formatString: #,0.00
+		lineageTag: bcacdd54-ca86-4db5-8d6f-d23e99fa5c34
+
+	measure 'Media de Paises por Evento' = SUM(Eventos_Hecho[PAISES])/medidas_puntos_encuentro[Total Encuentros]
+		formatString: #,0.00
+		lineageTag: c4e32bf6-985e-46a4-a7e7-7e1eea381442
+
+	measure 'LYTD Media de Asistentes por Evento' =
+			
+			var _max1 =maxx(allselected('Date_DIM'),[Date])
+			var _max = date(year(_max1)-1,month(_max1),day(_max1))
+			var _min1 =minx(allselected('Date_DIM'),[Date])
+			var _min = date(year(_min1)-1,month(_min1),day(_min1))
+			return
+			CALCULATE((SUM(Eventos_Hecho[Asistentes presenciales]) + SUM(Eventos_Hecho[VISUALIZACIONES UNICAS]))/medidas_puntos_encuentro[Total Encuentros],'Date_DIM'[Date]<=_max && 'Date_DIM'[Date]>=_min)
+		formatString: #,0.00
+		lineageTag: 9a61e645-d720-49c3-b8ec-8c06f49a32f9
+
+	measure 'LYTD Media de Paises por Evento' =
+			
+			var _max1 =maxx(allselected('Date_DIM'),[Date])
+			var _max = date(year(_max1)-1,month(_max1),day(_max1))
+			var _min1 =minx(allselected('Date_DIM'),[Date])
+			var _min = date(year(_min1)-1,month(_min1),day(_min1))
+			return
+			CALCULATE(SUM(Eventos_Hecho[PAISES])/medidas_puntos_encuentro[Total Encuentros],'Date_DIM'[Date]<=_max && 'Date_DIM'[Date]>=_min)
+		formatString: #,0.00
+		lineageTag: c0486247-3457-4f53-bc20-aa9ca49e8b27
+
+	measure 'Comparision Total Encuentros' =
+			
+			VAR denominator = medidas_puntos_encuentro[LYTD Total Encuentros]
+			VAR numerator = medidas_puntos_encuentro[Total Encuentros]
+			VAR difference = IF(ISBLANK(denominator)|| denominator = 0, "NaN", DIVIDE(numerator, denominator) - 1)
+			RETURN  IF(difference = "NaN", Comun[Mensaje No Data] & " en " & Comun[Previous Epoca], IF(difference > 0, "+", "") & ROUND(difference * 100, 0) & "% vs " & Comun[Previous Epoca])
+		lineageTag: 829f4de4-9b93-4446-98c7-da4d4e0fab97
+
+	measure 'Comparision Visualizacions Unicas Online' =
+			
+			
+			VAR denominator = medidas_puntos_encuentro[LYTD Total Visualizaciones Unicas Online]
+			VAR numerator = medidas_puntos_encuentro[Visualizaciones Unicas Online]
+			VAR difference = IF(ISBLANK(denominator)|| denominator = 0, "NaN", DIVIDE(numerator, denominator) - 1)
+			RETURN  IF(difference = "NaN", Comun[Mensaje No Data] & " en " & Comun[Previous Epoca], IF(difference > 0, "+", "") & ROUND(difference * 100, 0) & "% vs " & Comun[Previous Epoca])
+		lineageTag: f3eb3baa-213c-472b-a592-24c62026258d
+
+	measure 'Comparision Asistentes presenciales' =
+			
+			VAR denominator = medidas_puntos_encuentro[LYTD Total Asistentes Presenciales]
+			VAR numerator = medidas_puntos_encuentro[Total Asistentes Presenciales]
+			VAR difference = IF(ISBLANK(denominator)|| denominator = 0, "NaN", DIVIDE(numerator, denominator) - 1)
+			RETURN  IF(difference = "NaN", Comun[Mensaje No Data] & " en " & Comun[Previous Epoca], IF(difference > 0, "+", "") & ROUND(difference * 100, 0) & "% vs " & Comun[Previous Epoca])
+		lineageTag: c4f30e57-6b8f-427b-a0e9-303efb5f899e
+
+	partition medidas_puntos_encuentro = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

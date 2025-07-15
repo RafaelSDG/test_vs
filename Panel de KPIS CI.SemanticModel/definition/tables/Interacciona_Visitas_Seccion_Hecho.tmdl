@@ -1,0 +1,96 @@
+table Interacciona_Visitas_Seccion_Hecho
+	lineageTag: c5c917d1-fefb-4ae6-b700-43455f564850
+
+	column seccion_id
+		dataType: string
+		lineageTag: 802d074e-fb82-4c3f-bd49-5cde528866b1
+		summarizeBy: none
+		sourceColumn: seccion_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Views
+		dataType: int64
+		formatString: 0
+		lineageTag: 6233e30b-4c22-4181-ad8f-51c8c38cf33e
+		summarizeBy: sum
+		sourceColumn: Views
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Users'
+		dataType: int64
+		formatString: 0
+		lineageTag: 80391d57-6fb7-402b-a5d8-45a829756a6d
+		summarizeBy: sum
+		sourceColumn: Unique Users
+
+		annotation SummarizationSetBy = Automatic
+
+	column Duration
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: dc872be3-a221-444a-b207-a4a39b7e979b
+		summarizeBy: none
+		sourceColumn: Duration
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column 'Exit Rate'
+		dataType: double
+		lineageTag: 7fdcf80b-b36e-4006-88af-6b1ff85809bf
+		summarizeBy: sum
+		sourceColumn: Exit Rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Tipo Epoca'
+		dataType: string
+		lineageTag: ea0beb9a-e5f3-4142-b23d-a1cb924cc283
+		summarizeBy: none
+		sourceColumn: Tipo Epoca
+
+		annotation SummarizationSetBy = Automatic
+
+	column Año
+		dataType: int64
+		formatString: 0
+		lineageTag: 82de1749-f3d0-42b2-9b39-e2bfdc643f32
+		summarizeBy: sum
+		sourceColumn: Año
+
+		annotation SummarizationSetBy = Automatic
+
+	column Semestre
+		dataType: int64
+		formatString: 0
+		lineageTag: 81e45411-94c0-4aa2-8dbd-689533960530
+		summarizeBy: sum
+		sourceColumn: Semestre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		dataType: int64
+		formatString: 0
+		lineageTag: bf6b1157-aebc-48ef-92f6-d57437f68e8b
+		summarizeBy: sum
+		sourceColumn: Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Interacciona_Visitas_Seccion_Hecho = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("QECCDWH.acciona.int,60001", "DATA_DW"),
+				    #"Filtered Rows" = Source{[Schema="KPIS",Item="Interacciona_Visitas_Seccion_Hecho"]}[Data]
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_ResultType = Table
+

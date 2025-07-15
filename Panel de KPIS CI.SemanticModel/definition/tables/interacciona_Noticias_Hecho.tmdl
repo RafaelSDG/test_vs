@@ -1,0 +1,106 @@
+table interacciona_Noticias_Hecho
+	lineageTag: 0596536a-f75b-466e-b8de-70177bb5d9ed
+
+	column interacciona_noticia_hecho_id
+		dataType: int64
+		formatString: 0
+		lineageTag: d3ebae40-d808-4f9c-a02e-f01003f1d08f
+		summarizeBy: sum
+		sourceColumn: interacciona_noticia_hecho_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column interacciona_noticia_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 84704a1f-201d-43d0-ab1d-e32195cb77a8
+		summarizeBy: none
+		sourceColumn: interacciona_noticia_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Visitas
+		dataType: int64
+		formatString: 0
+		lineageTag: f80b46c8-b3a6-431f-9d57-dd77d7e3714b
+		summarizeBy: sum
+		sourceColumn: Visitas
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Usuarios Unicos'
+		dataType: int64
+		formatString: 0
+		lineageTag: c3a956ab-9201-4333-b270-35e659dc5543
+		summarizeBy: sum
+		sourceColumn: Usuarios Unicos
+
+		annotation SummarizationSetBy = Automatic
+
+	column Duracion
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: c98575c6-b2ca-4ce6-a5ef-5c37505f6cc5
+		summarizeBy: none
+		sourceColumn: Duracion
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column 'Exit Rate'
+		dataType: double
+		lineageTag: 462428f0-8c07-434f-bcc3-adc85363ea25
+		summarizeBy: sum
+		sourceColumn: Exit Rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Tipo Epoca'
+		dataType: string
+		lineageTag: 8b8e7269-60cd-4485-82eb-aa094146184c
+		summarizeBy: none
+		sourceColumn: Tipo Epoca
+
+		annotation SummarizationSetBy = Automatic
+
+	column Año
+		dataType: int64
+		formatString: 0
+		lineageTag: 26f85b9b-72a2-418c-a65d-f029076a24ae
+		summarizeBy: sum
+		sourceColumn: Año
+
+		annotation SummarizationSetBy = Automatic
+
+	column Semestre
+		dataType: int64
+		formatString: 0
+		lineageTag: acf1f1a3-faf8-4ba4-aadd-8c8d0da7c911
+		summarizeBy: sum
+		sourceColumn: Semestre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		dataType: int64
+		formatString: 0
+		lineageTag: d038f42e-eb64-4a4d-8d5e-a5eb1beceabc
+		summarizeBy: sum
+		sourceColumn: Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition interacciona_Noticias_Hecho = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("QECCDWH.acciona.int,60001", "DATA_DW"),
+				    #"Filtered Rows" = Source{[Schema="KPIS",Item="Interacciona_Noticias_Hecho"]}[Data]
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_ResultType = Table
+

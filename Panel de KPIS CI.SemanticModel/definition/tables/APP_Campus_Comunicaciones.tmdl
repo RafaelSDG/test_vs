@@ -1,0 +1,126 @@
+table APP_Campus_Comunicaciones
+	lineageTag: a7ae7814-d054-4bcf-a8b9-3a6295462f37
+
+	column fec_publicacion
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 26a55a02-fdae-4220-b7df-4548f11f3a17
+		summarizeBy: none
+		sourceColumn: fec_publicacion
+
+		annotation SummarizationSetBy = Automatic
+
+	column de_titulo
+		dataType: string
+		lineageTag: f1fc2367-60de-4cc1-8d1a-cf186fb25118
+		summarizeBy: none
+		sourceColumn: de_titulo
+
+		annotation SummarizationSetBy = Automatic
+
+	column de_categoria_new
+		dataType: string
+		lineageTag: 51db912c-9075-4bd6-83c3-09a88570ce8f
+		summarizeBy: none
+		sourceColumn: de_categoria_new
+
+		annotation SummarizationSetBy = Automatic
+
+	column flg_habilitar_notificacionespush
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1883b1f2-447c-4021-ba40-73a29ff99a93
+		summarizeBy: none
+		sourceColumn: flg_habilitar_notificacionespush
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_comunicacion
+		dataType: string
+		lineageTag: c390ec2d-3407-477b-b845-8b37ffa65eae
+		summarizeBy: none
+		sourceColumn: tipo_comunicacion
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nº Contenidos Publicadas'
+		dataType: int64
+		formatString: 0
+		lineageTag: aa024d50-1413-4dad-9f96-b05d087a086a
+		summarizeBy: sum
+		sourceColumn: Nº Contenidos Publicadas
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nº Contenidos Visualizados'
+		dataType: int64
+		formatString: 0
+		lineageTag: 687e1372-140c-4573-8274-5e6e2bbbfae5
+		summarizeBy: sum
+		sourceColumn: Nº Contenidos Visualizados
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nº Total Visualizaciones'
+		dataType: int64
+		formatString: 0
+		lineageTag: 278aa56a-2d9f-43cc-8762-3dd663a2f965
+		summarizeBy: sum
+		sourceColumn: Nº Total Visualizaciones
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nº Visualizaciones Únicas'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1cf1eeb7-c595-49ff-b970-4bc47e5cb24a
+		summarizeBy: sum
+		sourceColumn: Nº Visualizaciones Únicas
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_only_contenido
+		dataType: string
+		lineageTag: a6685e42-bfa9-4028-8f62-60c0bf4973d7
+		summarizeBy: none
+		sourceColumn: id_only_contenido
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'N¡ Total Visualizaciones0' = APP_Campus_Comunicaciones[Nº Total Visualizaciones]+0
+		formatString: 0
+		lineageTag: bd75d616-5825-4e6e-93a7-fb8baaa5914f
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nº Visualizaciones Únicas0' = APP_Campus_Comunicaciones[Nº Visualizaciones Únicas]+0
+		formatString: 0
+		lineageTag: 230770a6-34da-487f-8919-2610b1de9707
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 37f385ac-1dfe-41c8-8db5-a04acfcbcefd
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	partition APP_Campus_Comunicaciones = m
+		mode: import
+		source =
+				let
+				    Source = AnalysisServices.Database("powerbi://api.powerbi.com/v1.0/myorg/ATS_CI_Proyectos_PRO", "APP_Campus_CI", [Query="#(lf)EVALUATE#(lf)F_Contenidos#(lf)    ", Implementation="2.0"]),
+				    #"Renamed Columns" = Table.RenameColumns(Source,{{"F_Contenidos[D_Contenidos[fec_publicacion]]", "fec_publicacion"}, {"F_Contenidos[D_Contenidos[de_titulo]]", "de_titulo"}, {"F_Contenidos[D_Contenidos[tipo_comunicacion]]", "tipo_comunicacion"}, {"F_Contenidos[D_Contenidos[id_only_contenido]]", "id_only_contenido"}, {"F_Contenidos[[de_categoria_new]]", "de_categoria_new"}, {"F_Contenidos[[flg_habilitar_notificacionespush]]", "flg_habilitar_notificacionespush"}, {"F_Contenidos[[Nº Contenidos Publicadas]]", "Nº Contenidos Publicadas"}, {"F_Contenidos[[Nº Contenidos Visualizados]]", "Nº Contenidos Visualizados"}, {"F_Contenidos[[Nº Total Visualizaciones]]", "Nº Total Visualizaciones"}, {"F_Contenidos[[Nº Visualizaciones Únicas]]", "Nº Visualizaciones Únicas"}}),
+				    #"Added Index" = Table.AddIndexColumn(#"Renamed Columns", "Index", 0, 1, Int64.Type)
+				in
+				    #"Added Index"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

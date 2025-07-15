@@ -1,0 +1,250 @@
+table medidas_Otras_Apps
+	lineageTag: 109b3c5c-197a-4392-b511-c9d93c1904bd
+
+	measure 'Numero eventos Apps' = ```
+			
+			VAR Maximo = MAX(Date_DIM[Date])
+			VAR Minimo = MIN(Date_DIM[Date])
+			
+			VAR Calculo =
+			CALCULATE(
+			    DISTINCTCOUNT('Otras_Apps_Hecho'[otras_apps_hecho_id]),
+			    FILTER(
+			        'Otras_Apps_Hecho',
+			        ('Otras_Apps_Hecho'[fecha inicio] >= Minimo && 'Otras_Apps_Hecho'[fecha inicio] <= Maximo) || 
+			            ('Otras_Apps_Hecho'[fecha fin] >= Minimo && 'Otras_Apps_Hecho'[fecha fin] <= Maximo) ||
+			            ('Otras_Apps_Hecho'[fecha inicio] <= Minimo && 'Otras_Apps_Hecho'[fecha fin] >= Maximo)
+			    )
+			)
+			
+			RETURN IF(ISBLANK(Calculo), 0, Calculo)
+			```
+		lineageTag: 9e7f5e58-1bcf-40c8-b6a6-678a91fb8212
+
+	measure 'Usuarios sin Entrar' = sum('Otras_Apps_Hecho'[usuarios invitados]) - sum('Otras_APPS_Hecho'[usuarios con inicio de sesion])
+		formatString: #,0
+		lineageTag: c3781900-1cfa-4652-be99-7b4e207c67b7
+
+	measure 'LYTD Numero eventos Apps' = ```
+			
+			VAR MaximoAUX = MAX(Date_DIM[Date])
+			VAR Maximo = Date(YEAR(MaximoAUX)-1, MONTH(MaximoAUX), DAY(MaximoAUX))
+			VAR MinimoAUX = MIN(Date_DIM[Date])
+			VAR Minimo = Date(YEAR(MinimoAUX)-1, MONTH(MinimoAUX), DAY(MinimoAUX))
+			
+			VAR Calculo =
+			CALCULATE(
+			    DISTINCTCOUNT('Otras_Apps_Hecho'[otras_apps_hecho_id]),
+			    FILTER(
+			        'Otras_Apps_Hecho',
+			        ('Otras_Apps_Hecho'[fecha inicio] >= Minimo && 'Otras_Apps_Hecho'[fecha inicio] <= Maximo) || 
+			            ('Otras_Apps_Hecho'[fecha fin] >= Minimo && 'Otras_Apps_Hecho'[fecha fin] <= Maximo) ||
+			            ('Otras_Apps_Hecho'[fecha inicio] <= Minimo && 'Otras_Apps_Hecho'[fecha fin] >= Maximo)
+			    )
+			)
+			
+			RETURN IF(ISBLANK(Calculo), 0, Calculo)
+			```
+		formatString: #,0
+		lineageTag: df6d46d0-4eff-45e0-a164-39c43757791a
+
+	measure 'LYTD Usuarios Invitados' = ```
+			
+			VAR MaximoAUX = MAX(Date_DIM[Date])
+			VAR Maximo = Date(YEAR(MaximoAUX)-1, MONTH(MaximoAUX), DAY(MaximoAUX))
+			VAR MinimoAUX = MIN(Date_DIM[Date])
+			VAR Minimo = Date(YEAR(MinimoAUX)-1, MONTH(MinimoAUX), DAY(MinimoAUX))
+			
+			VAR Calculo =
+			CALCULATE(
+			    SUM('Otras_Apps_Hecho'[usuarios invitados]),
+			    FILTER(
+			        'Otras_Apps_Hecho',
+			        ('Otras_Apps_Hecho'[fecha inicio] >= Minimo && 'Otras_Apps_Hecho'[fecha inicio] <= Maximo) || 
+			            ('Otras_Apps_Hecho'[fecha fin] >= Minimo && 'Otras_Apps_Hecho'[fecha fin] <= Maximo) ||
+			            ('Otras_Apps_Hecho'[fecha inicio] <= Minimo && 'Otras_Apps_Hecho'[fecha fin] >= Maximo)
+			    )
+			)
+			
+			RETURN IF(ISBLANK(Calculo), 0, Calculo)
+			```
+		formatString: #,0
+		lineageTag: fa502dab-757f-4c45-a392-78032bd73522
+
+	measure 'LYTD Usuarios con Inicio de Sesion' = ```
+			
+			VAR MaximoAUX = MAX(Date_DIM[Date])
+			VAR Maximo = Date(YEAR(MaximoAUX)-1, MONTH(MaximoAUX), DAY(MaximoAUX))
+			VAR MinimoAUX = MIN(Date_DIM[Date])
+			VAR Minimo = Date(YEAR(MinimoAUX)-1, MONTH(MinimoAUX), DAY(MinimoAUX))
+			
+			VAR Calculo =
+			CALCULATE(
+			    SUM('Otras_Apps_Hecho'[usuarios con inicio de sesion]),
+			    FILTER(
+			        'Otras_Apps_Hecho',
+			        ('Otras_Apps_Hecho'[fecha inicio] >= Minimo && 'Otras_Apps_Hecho'[fecha inicio] <= Maximo) || 
+			            ('Otras_Apps_Hecho'[fecha fin] >= Minimo && 'Otras_Apps_Hecho'[fecha fin] <= Maximo) ||
+			            ('Otras_Apps_Hecho'[fecha inicio] <= Minimo && 'Otras_Apps_Hecho'[fecha fin] >= Maximo)
+			    )
+			)
+			
+			RETURN IF(ISBLANK(Calculo), 0, Calculo)
+			```
+		formatString: #,0
+		lineageTag: d4e1165c-4e7d-4c67-beb1-f53da3c7eb3b
+
+	measure 'LYTD Total Visitas' = ```
+			
+			VAR MaximoAUX = MAX(Date_DIM[Date])
+			VAR Maximo = Date(YEAR(MaximoAUX)-1, MONTH(MaximoAUX), DAY(MaximoAUX))
+			VAR MinimoAUX = MIN(Date_DIM[Date])
+			VAR Minimo = Date(YEAR(MinimoAUX)-1, MONTH(MinimoAUX), DAY(MinimoAUX))
+			
+			VAR Calculo =
+			CALCULATE(
+			    SUM('Otras_Apps_Hecho'[visitas totales]),
+			    FILTER(
+			        'Otras_Apps_Hecho',
+			        ('Otras_Apps_Hecho'[fecha inicio] >= Minimo && 'Otras_Apps_Hecho'[fecha inicio] <= Maximo) || 
+			            ('Otras_Apps_Hecho'[fecha fin] >= Minimo && 'Otras_Apps_Hecho'[fecha fin] <= Maximo) ||
+			            ('Otras_Apps_Hecho'[fecha inicio] <= Minimo && 'Otras_Apps_Hecho'[fecha fin] >= Maximo)
+			    )
+			)
+			
+			RETURN IF(ISBLANK(Calculo), 0, Calculo)
+			```
+		formatString: #,0
+		lineageTag: e49088e2-6c33-4bb3-bed7-edef68141fb1
+
+	measure 'LYTD Media de Efectividad' = ```
+			
+			VAR MaximoAUX = MAX(Date_DIM[Date])
+			VAR Maximo = Date(YEAR(MaximoAUX)-1, MONTH(MaximoAUX), DAY(MaximoAUX))
+			VAR MinimoAUX = MIN(Date_DIM[Date])
+			VAR Minimo = Date(YEAR(MinimoAUX)-1, MONTH(MinimoAUX), DAY(MinimoAUX))
+			
+			VAR Calculo =
+			CALCULATE(
+			    AVERAGE('Otras_Apps_Hecho'[% acceso]),
+			    FILTER(
+			        'Otras_Apps_Hecho',
+			        ('Otras_Apps_Hecho'[fecha inicio] >= Minimo && 'Otras_Apps_Hecho'[fecha inicio] <= Maximo) || 
+			            ('Otras_Apps_Hecho'[fecha fin] >= Minimo && 'Otras_Apps_Hecho'[fecha fin] <= Maximo) ||
+			            ('Otras_Apps_Hecho'[fecha inicio] <= Minimo && 'Otras_Apps_Hecho'[fecha fin] >= Maximo)
+			    )
+			)
+			
+			RETURN IF(ISBLANK(Calculo), 0, Calculo)
+			```
+		formatString: #,0.00\ %;-#,0.00\ %;#,0.00\ %
+		lineageTag: eb96e1c2-8e99-4a5b-910a-c02a45f7c9a2
+
+	measure 'Media de Efectividad' = ```
+			
+			VAR Maximo = MAX(Date_DIM[Date])
+			VAR Minimo = MIN(Date_DIM[Date])
+			
+			
+			VAR Calculo =
+			CALCULATE(
+			    AVERAGE('Otras_Apps_Hecho'[% acceso]),
+			    FILTER(
+			        'Otras_Apps_Hecho',
+			        ('Otras_Apps_Hecho'[fecha inicio] >= Minimo && 'Otras_Apps_Hecho'[fecha inicio] <= Maximo) || 
+			            ('Otras_Apps_Hecho'[fecha fin] >= Minimo && 'Otras_Apps_Hecho'[fecha fin] <= Maximo) ||
+			            ('Otras_Apps_Hecho'[fecha inicio] <= Minimo && 'Otras_Apps_Hecho'[fecha fin] >= Maximo)
+			    )
+			)
+			
+			RETURN IF(ISBLANK(Calculo), 0, Calculo)
+			```
+		formatString: #,0.00\ %;-#,0.00\ %;#,0.00\ %
+		lineageTag: 2550dd48-b39c-4fb7-a1e7-7da1e939eb32
+
+	measure 'Total Visitas' = ```
+			
+			VAR Maximo = MAX(Date_DIM[Date])
+			VAR Minimo = MIN(Date_DIM[Date])
+			
+			VAR Calculo =
+			CALCULATE(
+			    SUM('Otras_Apps_Hecho'[visitas totales]),
+			    FILTER(
+			        'Otras_Apps_Hecho',
+			        ('Otras_Apps_Hecho'[fecha inicio] >= Minimo && 'Otras_Apps_Hecho'[fecha inicio] <= Maximo) || 
+			            ('Otras_Apps_Hecho'[fecha fin] >= Minimo && 'Otras_Apps_Hecho'[fecha fin] <= Maximo) ||
+			            ('Otras_Apps_Hecho'[fecha inicio] <= Minimo && 'Otras_Apps_Hecho'[fecha fin] >= Maximo)
+			    )
+			)
+			
+			RETURN IF(ISBLANK(Calculo), 0, Calculo)
+			```
+		formatString: #,0
+		lineageTag: 054b5a89-181c-4db3-9e84-2207f0081ad5
+
+	measure 'Usuarios con Inicio de Sesion' = ```
+			
+			VAR Maximo = MAX(Date_DIM[Date])
+			VAR Minimo = MIN(Date_DIM[Date])
+			
+			VAR Calculo =
+			CALCULATE(
+			    SUM('Otras_Apps_Hecho'[usuarios con inicio de sesion]),
+			    FILTER(
+			        'Otras_Apps_Hecho',
+			        ('Otras_Apps_Hecho'[fecha inicio] >= Minimo && 'Otras_Apps_Hecho'[fecha inicio] <= Maximo) || 
+			            ('Otras_Apps_Hecho'[fecha fin] >= Minimo && 'Otras_Apps_Hecho'[fecha fin] <= Maximo) ||
+			            ('Otras_Apps_Hecho'[fecha inicio] <= Minimo && 'Otras_Apps_Hecho'[fecha fin] >= Maximo)
+			    )
+			)
+			
+			RETURN IF(ISBLANK(Calculo), 0, Calculo)
+			```
+		formatString: #,0
+		lineageTag: 52c81a73-57f0-463a-a10f-f7c148dc3b3e
+
+	measure 'Usuarios Invitados' = ```
+			
+			VAR Maximo = MAX(Date_DIM[Date])
+			VAR Minimo = MIN(Date_DIM[Date])
+			
+			VAR Calculo =
+			CALCULATE(
+			    SUM('Otras_Apps_Hecho'[usuarios invitados]),
+			    FILTER(
+			        'Otras_Apps_Hecho',
+			        ('Otras_Apps_Hecho'[fecha inicio] >= Minimo && 'Otras_Apps_Hecho'[fecha inicio] <= Maximo) || 
+			            ('Otras_Apps_Hecho'[fecha fin] >= Minimo && 'Otras_Apps_Hecho'[fecha fin] <= Maximo) ||
+			            ('Otras_Apps_Hecho'[fecha inicio] <= Minimo && 'Otras_Apps_Hecho'[fecha fin] >= Maximo)
+			    )
+			)
+			
+			RETURN IF(ISBLANK(Calculo), 0, Calculo)
+			```
+		formatString: #,0
+		lineageTag: 39c57768-a9f9-4276-a664-577c42315632
+
+	measure 'Rank OtrasApps con filtro fecha' =
+			
+			if(ISBLANK(SUMX(RELATEDTABLE(Otras_Apps_Hecho), Otras_Apps_Hecho[visitas totales])),
+			BLANK(),
+			RANKX(
+			    FILTER(ALLSELECTED(Otras_Apps_Hecho),medidas_Otras_Apps[Numero eventos Apps]>0),Otras_Apps_Hecho[visitas totales],
+			    SUMX(RELATEDTABLE(Otras_Apps_Hecho), Otras_Apps_Hecho[visitas totales])
+			))
+		formatString: 0
+		lineageTag: 1aa767de-11e9-41a0-a457-25c93a0322c0
+
+	partition medidas_Otras_Apps = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,36 @@
+table Campanas_Email_Idioma_Hecho
+	lineageTag: ea34ee5a-02b8-4502-a634-46fa315bc5be
+
+	column campanas_email_hecho_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 53fcd9b0-78c8-4597-9831-656fa5340615
+		summarizeBy: none
+		sourceColumn: campanas_email_hecho_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cod_Idioma
+		dataType: string
+		lineageTag: 818078d8-f44b-49ba-9806-aae7df8362fb
+		summarizeBy: none
+		sourceColumn: Cod_Idioma
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Campanas_Email_Idioma_Hecho = m
+		mode: import
+		source =
+				let
+				    Source = Campanas_Email_Hecho,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"campanas_email_hecho_id", "idioma"}),
+				    #"Split Column by Delimiter" = Table.ExpandListColumn(Table.TransformColumns(#"Removed Other Columns", {{"idioma", Splitter.SplitTextByDelimiter("/", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "idioma"),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"idioma", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"idioma", "Cod_Idioma"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

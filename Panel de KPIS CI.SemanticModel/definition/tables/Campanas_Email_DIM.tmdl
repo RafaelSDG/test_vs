@@ -1,0 +1,91 @@
+table Campanas_Email_DIM
+	lineageTag: 80a6aef8-1873-482f-a067-8c3e4bb066ae
+
+	column ' Topic'
+		dataType: string
+		lineageTag: 3a306bd7-47c8-4a48-a9a5-dde3dd543ac6
+		summarizeBy: none
+		sourceColumn: " Topic"
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Target group (description)'
+		dataType: string
+		lineageTag: 4609888e-5653-4869-a37e-904bda5d4264
+		summarizeBy: none
+		sourceColumn: Target group (description)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Work center'
+		dataType: string
+		lineageTag: c87bca1c-1827-459b-9611-e0fb8806f10b
+		summarizeBy: none
+		sourceColumn: Work center
+
+		annotation SummarizationSetBy = Automatic
+
+	column Role
+		dataType: string
+		lineageTag: 0af2da13-3fa1-41b4-b393-91513f23dbc4
+		summarizeBy: none
+		sourceColumn: Role
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Newsletter (yes/no)'
+		dataType: string
+		lineageTag: 88f7eb48-0002-4d9b-a41c-61b03719f9fc
+		summarizeBy: none
+		sourceColumn: Newsletter (yes/no)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'nombre campaña'
+		dataType: string
+		lineageTag: 0e16354b-4374-4a76-a24e-74e2a0be56d8
+		summarizeBy: none
+		sourceColumn: nombre campaña
+
+		annotation SummarizationSetBy = Automatic
+
+	column asunto
+		dataType: string
+		lineageTag: 185e1097-1310-4295-8bc6-a1dc364ac50f
+		summarizeBy: none
+		sourceColumn: asunto
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_division
+		dataType: string
+		lineageTag: 77c112eb-35be-49a5-b78c-87285bc693b4
+		summarizeBy: none
+		sourceColumn: area_division
+
+		annotation SummarizationSetBy = Automatic
+
+	column campana_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 6c820f8e-08f4-440a-954e-44aaa6c2c8d0
+		summarizeBy: none
+		sourceColumn: campana_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Campanas_Email_DIM = m
+		mode: import
+		source =
+				let
+				    Source = Emailing,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{" Topic", "division / area ", "Target group (description)", "Work center", "Role", "Newsletter (yes/no)", "asunto", "id_campaña"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"division / area ", "area_division"}, {"id_campaña", "campana_id"}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Renamed Columns"),
+				    #"Added Index" = Table.AddIndexColumn(#"Removed Duplicates", "Index", 1, 1, Int64.Type),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Added Index",{{"campana_id", "nombre campaña"}, {"Index", "campana_id"}})
+				in
+				    #"Renamed Columns1"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,42 @@
+table Campanas_Remitente_DIM
+	lineageTag: b5d9ec4a-0609-4b51-bda9-ebe7ed39f171
+
+	column 'Sender Category'
+		dataType: string
+		lineageTag: 4ac8cc7b-df28-4a20-9dbc-278a05e39459
+		summarizeBy: none
+		sourceColumn: Sender Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sender
+		dataType: string
+		lineageTag: 116c5eb5-469d-4192-94a3-d2090e0b9caf
+		summarizeBy: none
+		sourceColumn: Sender
+
+		annotation SummarizationSetBy = Automatic
+
+	column remitente_id
+		dataType: int64
+		formatString: 0
+		lineageTag: f7090dbc-d074-4378-9220-59364fa28a0e
+		summarizeBy: none
+		sourceColumn: remitente_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Campanas_Remitente_DIM = m
+		mode: import
+		source =
+				let
+				    Source = Emailing,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"Sender Category", "Sender"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Added Index" = Table.AddIndexColumn(#"Removed Duplicates", "Index", 1, 1, Int64.Type),
+				    #"Renamed Columns" = Table.RenameColumns(#"Added Index",{{"Index", "remitente_id"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

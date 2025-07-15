@@ -1,0 +1,140 @@
+table Interacciona_Noticias_Publicacion_Hecho
+	lineageTag: 1ee2c615-e51d-4b1c-bb77-aa71afeb26a6
+
+	column 'Publishing Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 985cb05c-1b79-474d-839f-223e309c0fa1
+		summarizeBy: none
+		sourceColumn: Publishing Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'REPORT CATEGORY (TOPIC)'
+		dataType: string
+		lineageTag: f4a47441-f9bd-4d64-9e15-f46c36265ac1
+		summarizeBy: none
+		sourceColumn: REPORT CATEGORY (TOPIC)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AREA / DIVISION '
+		dataType: string
+		lineageTag: c55a4acd-7384-4f46-ae96-701e3ca54ba8
+		summarizeBy: none
+		sourceColumn: "AREA / DIVISION "
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Title ES'
+		dataType: string
+		lineageTag: 5e73ce16-53da-446b-9de8-79bbf85d92bf
+		summarizeBy: none
+		sourceColumn: Title ES
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title
+		dataType: string
+		lineageTag: b3442b2a-de4d-4c83-94ed-9daf82a84837
+		summarizeBy: none
+		sourceColumn: Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 3eae0eb2-49b2-4709-a8fd-f010aa47fe79
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Origen
+		dataType: string
+		lineageTag: 73f707d4-8905-4040-9c69-3e7aeb2d0944
+		summarizeBy: none
+		sourceColumn: Origen
+
+		annotation SummarizationSetBy = Automatic
+
+	column interacciona_noticias_publicacion_hecho_id
+		dataType: int64
+		formatString: #,0
+		lineageTag: 18f14522-0a05-4127-aa90-3652a3ce584d
+		summarizeBy: none
+		sourceColumn: interacciona_noticias_publicacion_hecho_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column interacciona_noticia_id
+		dataType: int64
+		formatString: 0
+		lineageTag: e0315227-4c0a-443d-89c3-08347213ccf7
+		summarizeBy: none
+		sourceColumn: interacciona_noticia_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'News Category'
+		dataType: string
+		lineageTag: b6fa06cf-6dd5-46c8-a6c6-51b1ff77b487
+		summarizeBy: none
+		sourceColumn: News Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Audiencia - Security group'
+		dataType: string
+		lineageTag: c13cc2a7-7011-4cf3-808b-9ddaad034bdf
+		summarizeBy: none
+		sourceColumn: Audiencia - Security group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'News Publishing Panel'
+		dataType: string
+		lineageTag: b56efca5-e769-4bf8-8625-229389fbe2df
+		summarizeBy: none
+		sourceColumn: News Publishing Panel
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'News Thematics'
+		dataType: string
+		lineageTag: 9ceee760-b17a-4205-9a82-881f93873b6e
+		summarizeBy: none
+		sourceColumn: News Thematics
+
+		annotation SummarizationSetBy = Automatic
+
+	column interacciona_origen_noticia_id
+		dataType: int64
+		formatString: 0
+		lineageTag: ad6d0d10-fb02-4cad-903f-d0bb0fc1fbe7
+		summarizeBy: sum
+		sourceColumn: interacciona_origen_noticia_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Filename
+		dataType: string
+		lineageTag: 9de9de9c-87dc-42ad-8b25-4adb18f99c21
+		summarizeBy: none
+		sourceColumn: Filename
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Interacciona_Noticias_Publicacion_Hecho = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("QECCDWH.acciona.int,60001", "DATA_DW"),
+				    #"Filtered Rows" = Source{[Schema="KPIS",Item="Interacciona_Noticias_Publicacion_Hecho"]}[Data]
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_ResultType = Table
+

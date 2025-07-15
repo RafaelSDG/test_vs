@@ -1,0 +1,31 @@
+table Interacciona_Noticias_DIM
+	lineageTag: d59c7777-598e-429c-8b4e-0e1bcb6305d5
+
+	column interacciona_noticia_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 37d9db3b-bec1-400f-9e8b-3c65b755f4e1
+		summarizeBy: none
+		sourceColumn: interacciona_noticia_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Url
+		dataType: string
+		lineageTag: 60afa26f-c9a6-4085-b240-a46ee6731843
+		summarizeBy: none
+		sourceColumn: Url
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Interacciona_Noticias_DIM = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("QECCDWH.acciona.int,60001", "DATA_DW"),
+				    #"Filtered Rows" = Source{[Schema="KPIS",Item="Interacciona_Noticias_DIM"]}[Data]
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,141 @@
+table Campanas_Email_Hecho
+	lineageTag: 8e13c3d3-cfd9-468d-8535-359689f262d6
+
+	column Type
+		dataType: string
+		lineageTag: f999ac23-2bdc-4df1-aef6-9c9f7b1d0484
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 484c41e3-b3d0-49e6-829d-dc9e32bda8ae
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column idioma
+		dataType: string
+		lineageTag: 16633cac-c311-4466-89f3-b921c234eeff
+		summarizeBy: none
+		sourceColumn: idioma
+
+		annotation SummarizationSetBy = Automatic
+
+	column fecha
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 6142380e-7eef-455e-8615-e7986f3c7074
+		summarizeBy: none
+		sourceColumn: fecha
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Destinatarios
+		dataType: double
+		lineageTag: dc87abfa-ef8b-49ca-81a3-6a29d54e4449
+		summarizeBy: sum
+		sourceColumn: Destinatarios
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Recibidos
+		dataType: double
+		lineageTag: 6eaeeef3-85bc-4945-9acf-5434120fc38f
+		summarizeBy: sum
+		sourceColumn: Recibidos
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Aperturas '
+		dataType: double
+		lineageTag: 4c0bf03d-9f9b-4e2b-af0f-2aabe720f63c
+		summarizeBy: sum
+		sourceColumn: "Aperturas "
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Abridores
+		dataType: double
+		lineageTag: 55199c38-9b57-4fa0-8bac-48d37b0af13e
+		summarizeBy: sum
+		sourceColumn: Abridores
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Clicks
+		dataType: double
+		lineageTag: 6f56e3a4-3773-4a46-b7af-07762fc7d35e
+		summarizeBy: sum
+		sourceColumn: Clicks
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'ratio efectividad'
+		dataType: double
+		formatString: 0\ %;-0\ %;0\ %
+		lineageTag: f916a793-b0a7-469c-ac24-18325bcf6fa7
+		summarizeBy: sum
+		sourceColumn: ratio efectividad
+
+		annotation SummarizationSetBy = Automatic
+
+	column remitente_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 31818e03-1859-44db-8950-82e7803c6753
+		summarizeBy: none
+		sourceColumn: remitente_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column campana_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 28f85ee2-966e-4688-96e1-5442e00394ca
+		summarizeBy: none
+		sourceColumn: campana_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column campanas_email_hecho_id
+		dataType: int64
+		formatString: 0
+		lineageTag: c9a0ab8c-6b4f-49f2-b7e4-48c3688d067c
+		summarizeBy: none
+		sourceColumn: campanas_email_hecho_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Campanas_Email_Hecho = m
+		mode: import
+		source =
+				let
+				    Source = Emailing,
+				    #"Merged Queries" = Table.NestedJoin(Source, {"Sender Category", "Sender"}, Campanas_Remitente_DIM, {"Sender Category", "Sender"}, "Campanas_Remitente_DIM2", JoinKind.LeftOuter),
+				    #"Expanded Campanas_Remitente_DIM2" = Table.ExpandTableColumn(#"Merged Queries", "Campanas_Remitente_DIM2", {"remitente_id"}, {"remitente_id"}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Expanded Campanas_Remitente_DIM2", {" Topic", "division / area ", "Target group (description)", "Work center", "Role", "Newsletter (yes/no)", "asunto", "id_campaña"}, Campanas_Email_DIM, {" Topic", "area_division", "Target group (description)", "Work center", "Role", "Newsletter (yes/no)", "asunto", "nombre campaña"}, "Campanas_Email_DIM2", JoinKind.LeftOuter),
+				    #"Expanded Campanas_Email_DIM2" = Table.ExpandTableColumn(#"Merged Queries1", "Campanas_Email_DIM2", {"campana_id"}, {"campana_id"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Campanas_Email_DIM2",{{"fecha", type date}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"fecha", "idioma", "Country", "Type", "Destinatarios", "Recibidos", "Aperturas ", "Abridores", "Clicks", "ID", "ratio efectividad", "remitente_id", "campana_id"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"ID", "campanas_email_hecho_id"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Exception
+
