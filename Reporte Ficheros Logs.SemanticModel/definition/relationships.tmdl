@@ -1,0 +1,10 @@
+relationship cd8c1c52-8f23-432f-b59d-9258cfbe8953
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Files Load SSIS Logs'.CreationDate
+	toColumn: LocalDateTable_c68a0a91-5bbb-4191-aa8f-3fa56e246684.Date
+
+relationship b3ae80da-6e32-4c8a-8b99-079970d47f5f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Files Load Log'.CreationDate
+	toColumn: LocalDateTable_eca626b3-0588-4946-8d71-f91a40ca1648.Date
+

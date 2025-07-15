@@ -1,0 +1,88 @@
+table 'Files Load Log'
+	lineageTag: c98c4c31-ba00-4571-a7d6-2f20c02a8126
+
+	column FileName
+		dataType: string
+		lineageTag: 1c1ff6f8-feac-4b0c-a757-7fbbef5b909b
+		summarizeBy: none
+		sourceColumn: FileName
+
+		annotation SummarizationSetBy = Automatic
+
+	column error
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ff0a551-0c2a-4f19-a3a6-7fa24ccb336a
+		summarizeBy: sum
+		sourceColumn: error
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreationDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8d669cff-486c-4a5c-9cd3-f645f5159af7
+		summarizeBy: none
+		sourceColumn: CreationDate
+
+		variation Variation
+			isDefault
+			relationship: b3ae80da-6e32-4c8a-8b99-079970d47f5f
+			defaultHierarchy: LocalDateTable_eca626b3-0588-4946-8d71-f91a40ca1648.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Model
+		dataType: string
+		lineageTag: 597e0f37-1365-4322-9c8c-b5bf940d8940
+		summarizeBy: none
+		sourceColumn: Model
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExcelSheetName
+		dataType: string
+		lineageTag: a9522d4c-f92f-4389-9fb4-af24ba228c83
+		summarizeBy: none
+		sourceColumn: ExcelSheetName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Error Filter'
+		dataType: string
+		lineageTag: 51b144c8-7b30-45ca-b588-1c43daba0b98
+		summarizeBy: none
+		sourceColumn: Error Filter
+
+		annotation SummarizationSetBy = Automatic
+
+	column Log
+		dataType: string
+		lineageTag: 0bdd5540-5391-4da8-8999-8aecf8b29b5a
+		summarizeBy: none
+		sourceColumn: Log
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: 35fc5318-5e93-43fb-b7a8-7457a896ee9c
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Files Load Log' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("QECCDWH.acciona.int,60001", "DATA_STG", [Query="select * from dwh_config.filesload_log where model = 'PANEL_KPIS'"]),
+				    #"Added Conditional Column" = Table.AddColumn(Source, "Custom", each if [error] = 0 then "Cargado / Ejecutado" else if [error] = 1 then "Error" else null, type text),
+				    #"Renamed Columns" = Table.RenameColumns(#"Added Conditional Column",{{"Custom", "Error Filter"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

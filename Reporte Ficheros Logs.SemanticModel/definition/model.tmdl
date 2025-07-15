@@ -1,0 +1,24 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-ES
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Files Load SSIS Logs","Files Load Log"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.145.1105.0 (25.07)+decbc46fce458c5b8d5109d6f32a743f2ac949c8
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_76bc6e7a-56f1-4421-867e-8004c0c819e6
+ref table 'Files Load SSIS Logs'
+ref table LocalDateTable_c68a0a91-5bbb-4191-aa8f-3fa56e246684
+ref table 'Files Load Log'
+ref table LocalDateTable_eca626b3-0588-4946-8d71-f91a40ca1648
+
+ref cultureInfo en-US
+

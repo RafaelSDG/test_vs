@@ -1,0 +1,88 @@
+table 'Files Load SSIS Logs'
+	lineageTag: 81d4119b-bc9a-4b6b-b3d4-30ab0ec9b32e
+
+	column Project
+		dataType: string
+		lineageTag: 1cd245b7-6dcc-4cf7-8258-df6aca0542c8
+		summarizeBy: none
+		sourceColumn: Project
+
+		annotation SummarizationSetBy = Automatic
+
+	column Package
+		dataType: string
+		lineageTag: 543b8611-33f9-4c1c-bd28-e7b7f31acced
+		summarizeBy: none
+		sourceColumn: Package
+
+		annotation SummarizationSetBy = Automatic
+
+	column FileName
+		dataType: string
+		lineageTag: c57588e9-a7a2-4590-aa03-8a2af1a20efb
+		summarizeBy: none
+		sourceColumn: FileName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Error
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9cbc4274-1d19-4908-a174-4f5e552eaa5a
+		summarizeBy: none
+		sourceColumn: Error
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreationDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ba55327c-05d9-4e73-96a0-85105f76bca0
+		summarizeBy: none
+		sourceColumn: CreationDate
+
+		variation Variation
+			isDefault
+			relationship: cd8c1c52-8f23-432f-b59d-9258cfbe8953
+			defaultHierarchy: LocalDateTable_c68a0a91-5bbb-4191-aa8f-3fa56e246684.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: 916a55f4-ea26-4efe-9b13-aec96aa4c8e4
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Log
+		dataType: string
+		lineageTag: 1fd6b164-47ba-4e09-90a7-c2dc0e3d752d
+		summarizeBy: none
+		sourceColumn: Log
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Error Filter'
+		dataType: string
+		lineageTag: a6c68d70-e5c9-461d-b907-8d57256f034b
+		summarizeBy: none
+		sourceColumn: Error Filter
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Files Load SSIS Logs' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("QECCDWH.acciona.int,60001", "DATA_STG", [Query="select * from dwh_config.filesload_ssis_logs where Project = 'PANEL KPIS'"]),
+				    #"Added Conditional Column" = Table.AddColumn(Source, "Custom", each if [Error] = true then "Error" else if [Error] = false then "Cargado / Ejecutado" else null, type text),
+				    #"Renamed Columns" = Table.RenameColumns(#"Added Conditional Column",{{"Custom", "Error Filter"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

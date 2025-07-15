@@ -1,0 +1,242 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "files_load_log.creationdate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load Log",
+			          "ConceptualProperty": "CreationDate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fecha Carga": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "files_load_log.error_filter": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load Log",
+			          "ConceptualProperty": "Error Filter"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Estado": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "files_load_log.excelsheetname": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load Log",
+			          "ConceptualProperty": "ExcelSheetName"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Hoja Excel": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "files_load_log.filename": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load Log",
+			          "ConceptualProperty": "FileName"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fichero Cargado": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "files_load_log.model": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load Log",
+			          "ConceptualProperty": "Model"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Modelo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "files_load_ssis_logs.project": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load SSIS Logs",
+			          "ConceptualProperty": "Project"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Modelo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "files_load_ssis_logs.package": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load SSIS Logs",
+			          "ConceptualProperty": "Package"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Paquete": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "files_load_ssis_logs.filename": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load SSIS Logs",
+			          "ConceptualProperty": "FileName"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fichero": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "files_load_ssis_logs.error_filter": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load SSIS Logs",
+			          "ConceptualProperty": "Error Filter"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Estado": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "files_load_ssis_logs.creationdate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load SSIS Logs",
+			          "ConceptualProperty": "CreationDate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fecha Carga": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "files_load_ssis_logs.description": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load SSIS Logs",
+			          "ConceptualProperty": "Description"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Descripción": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+
