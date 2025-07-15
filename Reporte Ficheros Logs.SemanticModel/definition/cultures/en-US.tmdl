@@ -2,10 +2,10 @@ cultureInfo en-US
 
 	linguisticMetadata =
 			{
-			  "Version": "2.0.0",
+			  "Version": "4.1.0",
 			  "Language": "en-US",
 			  "Entities": {
-			    "files_load_log.creationdate": {
+			    "files_load_log.creation_date": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Files Load Log",
@@ -14,6 +14,44 @@ cultureInfo en-US
 			      },
 			      "State": "Generated",
 			      "Terms": [
+			        {
+			          "creation date": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "CreationDate": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "creation moment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "creation period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
 			        {
 			          "Fecha Carga": {
 			            "State": "Suggested",
@@ -24,7 +62,8 @@ cultureInfo en-US
 			            "Weight": 0.9
 			          }
 			        }
-			      ]
+			      ],
+			      "SemanticType": "Time"
 			    },
 			    "files_load_log.error_filter": {
 			      "Definition": {
@@ -35,6 +74,117 @@ cultureInfo en-US
 			      },
 			      "State": "Generated",
 			      "Terms": [
+			        {
+			          "error filter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "filter": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "error strainer": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "error sifter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "strainer": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "sifter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "error sieve": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "error mesh": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "error riddle": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "error screen": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "sieve": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "mesh": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
 			        {
 			          "Estado": {
 			            "State": "Suggested",
@@ -47,7 +197,7 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "files_load_log.excelsheetname": {
+			    "files_load_log.excel_sheet_name": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Files Load Log",
@@ -56,6 +206,118 @@ cultureInfo en-US
 			      },
 			      "State": "Generated",
 			      "Terms": [
+			        {
+			          "excel sheet name": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ExcelSheetName": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "excel sheet nickname": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "excel sheet title": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "excel sheet label": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "excel sheet tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "excel pane name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "excel piece name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "excel page name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "excel leaf name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "excel slip name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "excel expanse name": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
 			        {
 			          "Hoja Excel": {
 			            "State": "Suggested",
@@ -68,7 +330,7 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "files_load_log.filename": {
+			    "files_load_log.file_name": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Files Load Log",
@@ -77,6 +339,124 @@ cultureInfo en-US
 			      },
 			      "State": "Generated",
 			      "Terms": [
+			        {
+			          "file name": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "FileName": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "file": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "file nickname": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "file title": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "file label": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "file tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "folder": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "dossier": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "organizer": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "categorizer": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "wallet": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "sleeve": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
 			        {
 			          "Fichero Cargado": {
 			            "State": "Suggested",
@@ -99,26 +479,110 @@ cultureInfo en-US
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "Modelo": {
+			          "model": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "perfect": {
+			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
+			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.9
+			            "Weight": 0.476
 			          }
-			        }
-			      ]
-			    },
-			    "files_load_ssis_logs.project": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "Files Load SSIS Logs",
-			          "ConceptualProperty": "Project"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
+			        },
+			        {
+			          "classic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "ideal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "standard": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "representative": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "mockup": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "representation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "simulation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "replica": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "copy": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
 			        {
 			          "Modelo": {
 			            "State": "Suggested",
@@ -131,7 +595,123 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "files_load_ssis_logs.package": {
+			    "files_load_SSIS_log.project": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load SSIS Logs",
+			          "ConceptualProperty": "Project"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "project": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "assignment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "development": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "blueprint": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "design": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "estimate": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "forecast": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "initiative": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "plan": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "task": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "Esto es un test": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "files_load_SSIS_log.package": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Files Load SSIS Logs",
@@ -140,6 +720,111 @@ cultureInfo en-US
 			      },
 			      "State": "Generated",
 			      "Terms": [
+			        {
+			          "package": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "suite": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "compendium": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "platform": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "set": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "bundle": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "raft": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "array": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "container": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "envelope": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "wallet": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
 			        {
 			          "Paquete": {
 			            "State": "Suggested",
@@ -152,7 +837,7 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "files_load_ssis_logs.filename": {
+			    "files_load_SSIS_log.file_name": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Files Load SSIS Logs",
@@ -161,6 +846,124 @@ cultureInfo en-US
 			      },
 			      "State": "Generated",
 			      "Terms": [
+			        {
+			          "file name": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "FileName": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "file": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "file nickname": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "file title": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "file label": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "file tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "folder": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "dossier": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "organizer": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "categorizer": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "wallet": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "sleeve": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
 			        {
 			          "Fichero": {
 			            "State": "Suggested",
@@ -173,7 +976,7 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "files_load_ssis_logs.error_filter": {
+			    "files_load_SSIS_log.error_filter": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Files Load SSIS Logs",
@@ -182,6 +985,117 @@ cultureInfo en-US
 			      },
 			      "State": "Generated",
 			      "Terms": [
+			        {
+			          "error filter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "filter": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "error strainer": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "error sifter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "strainer": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "sifter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "error sieve": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "error mesh": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "error riddle": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "error screen": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "sieve": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "mesh": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
 			        {
 			          "Estado": {
 			            "State": "Suggested",
@@ -194,7 +1108,7 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "files_load_ssis_logs.creationdate": {
+			    "files_load_SSIS_log.creation_date": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Files Load SSIS Logs",
@@ -203,6 +1117,44 @@ cultureInfo en-US
 			      },
 			      "State": "Generated",
 			      "Terms": [
+			        {
+			          "creation date": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "CreationDate": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "creation moment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "creation period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
 			        {
 			          "Fecha Carga": {
 			            "State": "Suggested",
@@ -213,9 +1165,10 @@ cultureInfo en-US
 			            "Weight": 0.9
 			          }
 			        }
-			      ]
+			      ],
+			      "SemanticType": "Time"
 			    },
-			    "files_load_ssis_logs.description": {
+			    "files_load_SSIS_log.description": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Files Load SSIS Logs",
@@ -224,6 +1177,81 @@ cultureInfo en-US
 			      },
 			      "State": "Generated",
 			      "Terms": [
+			        {
+			          "description": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "appearance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "descriptor": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "explanation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "specification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "account": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "overview": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "report": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
 			        {
 			          "Descripción": {
 			            "State": "Suggested",
@@ -235,6 +1263,1997 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "files_load_SSIS_log": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load SSIS Logs"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "files load SSIS log": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "file load SSI log": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "SSIS log": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "SSI log": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.7566
+			          }
+			        },
+			        {
+			          "load SSIS log": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "load SSI log": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.7566
+			          }
+			        },
+			        {
+			          "file load SSI journal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "file load SSI diary": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "file load SSI daybook": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "file load SSI logbook": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "load SSI journal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "load SSI diary": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "load SSI daybook": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "load SSI logbook": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "SSI journal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "SSI diary": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        }
+			      ]
+			    },
+			    "files_load_SSIS_log.error": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load SSIS Logs",
+			          "ConceptualProperty": "Error"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "error": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "booboo": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "inaccuracy": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "miscalculation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "slipup": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "mistake": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "fault": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "blunder": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "boo-boo": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "slip": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "slip-up": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "files_load_SSIS_log.creation_date.date_hierarchy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load SSIS Logs",
+			          "VariationSource": "CreationDate",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fecha Carga date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "files_load_SSIS_log.creation_date.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load SSIS Logs",
+			          "VariationSource": "CreationDate",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fecha Carga year": {
+			            "State": "Generated",
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "fecha carga yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "files_load_SSIS_log.creation_date.quarter": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load SSIS Logs",
+			          "VariationSource": "CreationDate",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Quarter"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fecha Carga quarter": {
+			            "State": "Generated",
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "fecha carga qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.846
+			          }
+			        },
+			        {
+			          "qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.818
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "files_load_SSIS_log.creation_date.month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load SSIS Logs",
+			          "VariationSource": "CreationDate",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fecha Carga month": {
+			            "State": "Generated",
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "fecha carga mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "files_load_SSIS_log.creation_date.day": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load SSIS Logs",
+			          "VariationSource": "CreationDate",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Day"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fecha Carga day": {
+			            "State": "Generated",
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "day": {
+			            "State": "Generated"
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "files_load_SSIS_log.log": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load SSIS Logs",
+			          "ConceptualProperty": "Log"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "log": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "journal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "diary": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "daybook": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "logbook": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "record": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "calendar": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "files_load_log": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load Log"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "files load log": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "file load log": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "load log": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "file load journal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "file load diary": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "file load daybook": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "file load logbook": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "load journal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "load diary": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "load daybook": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "load logbook": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "file load record": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "file load calendar": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        }
+			      ]
+			    },
+			    "files_load_log.error": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load Log",
+			          "ConceptualProperty": "error"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "error": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "booboo": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "inaccuracy": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "miscalculation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "slipup": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "mistake": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "fault": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "blunder": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "boo-boo": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "slip": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "slip-up": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "files_load_log.creation_date.date_hierarchy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load Log",
+			          "VariationSource": "CreationDate",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fecha Carga date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "files_load_log.creation_date.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load Log",
+			          "VariationSource": "CreationDate",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fecha Carga year": {
+			            "State": "Generated",
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "fecha carga yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "files_load_log.creation_date.quarter": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load Log",
+			          "VariationSource": "CreationDate",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Quarter"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fecha Carga quarter": {
+			            "State": "Generated",
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "fecha carga qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.846
+			          }
+			        },
+			        {
+			          "qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.818
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "files_load_log.creation_date.month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load Log",
+			          "VariationSource": "CreationDate",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fecha Carga month": {
+			            "State": "Generated",
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "fecha carga mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "files_load_log.creation_date.day": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load Log",
+			          "VariationSource": "CreationDate",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Day"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fecha Carga day": {
+			            "State": "Generated",
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "day": {
+			            "State": "Generated"
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "files_load_log.log": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load Log",
+			          "ConceptualProperty": "Log"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "log": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "journal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "diary": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "daybook": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "logbook": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "record": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "calendar": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "files_load_log.description": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Files Load Log",
+			          "ConceptualProperty": "Description"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "description": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "appearance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "descriptor": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "explanation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "specification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "account": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "overview": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "report": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ]
+			    }
+			  },
+			  "Relationships": {
+			    "files_load_log_has_creation_date": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load Log"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_log": {
+			          "Target": {
+			            "Entity": "files_load_log"
+			          }
+			        },
+			        "files_load_log.creation_date": {
+			          "Target": {
+			            "Entity": "files_load_log.creation_date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_log"
+			            },
+			            "Object": {
+			              "Role": "files_load_log.creation_date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "files_load_logs_have_creation_dates"
+			        }
+			      ]
+			    },
+			    "files_load_log_has_error_filter": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load Log"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_log": {
+			          "Target": {
+			            "Entity": "files_load_log"
+			          }
+			        },
+			        "files_load_log.error_filter": {
+			          "Target": {
+			            "Entity": "files_load_log.error_filter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_log"
+			            },
+			            "Object": {
+			              "Role": "files_load_log.error_filter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "files_load_logs_have_error_filters"
+			        }
+			      ]
+			    },
+			    "files_load_log_has_excel_sheet_name": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load Log"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_log": {
+			          "Target": {
+			            "Entity": "files_load_log"
+			          }
+			        },
+			        "files_load_log.excel_sheet_name": {
+			          "Target": {
+			            "Entity": "files_load_log.excel_sheet_name"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_log"
+			            },
+			            "Object": {
+			              "Role": "files_load_log.excel_sheet_name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "files_load_logs_have_excel_sheet_name"
+			        }
+			      ]
+			    },
+			    "files_load_log_has_file_name": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load Log"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_log": {
+			          "Target": {
+			            "Entity": "files_load_log"
+			          }
+			        },
+			        "files_load_log.file_name": {
+			          "Target": {
+			            "Entity": "files_load_log.file_name"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_log"
+			            },
+			            "Object": {
+			              "Role": "files_load_log.file_name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "files_load_logs_have_file_names"
+			        }
+			      ]
+			    },
+			    "files_load_log_has_model": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load Log"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_log": {
+			          "Target": {
+			            "Entity": "files_load_log"
+			          }
+			        },
+			        "files_load_log.model": {
+			          "Target": {
+			            "Entity": "files_load_log.model"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_log"
+			            },
+			            "Object": {
+			              "Role": "files_load_log.model"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "files_load_logs_have_models"
+			        }
+			      ]
+			    },
+			    "files_load_SSIS_log_has_project": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load SSIS Logs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_SSIS_log": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log"
+			          }
+			        },
+			        "files_load_SSIS_log.project": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log.project"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_SSIS_log"
+			            },
+			            "Object": {
+			              "Role": "files_load_SSIS_log.project"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "files_load_SSIS_logs_have_projects"
+			        }
+			      ]
+			    },
+			    "files_load_SSIS_log_has_package": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load SSIS Logs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_SSIS_log": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log"
+			          }
+			        },
+			        "files_load_SSIS_log.package": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log.package"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_SSIS_log"
+			            },
+			            "Object": {
+			              "Role": "files_load_SSIS_log.package"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "files_load_SSIS_logs_have_packages"
+			        }
+			      ]
+			    },
+			    "files_load_SSIS_log_has_file_name": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load SSIS Logs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_SSIS_log": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log"
+			          }
+			        },
+			        "files_load_SSIS_log.file_name": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log.file_name"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_SSIS_log"
+			            },
+			            "Object": {
+			              "Role": "files_load_SSIS_log.file_name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "files_load_SSIS_logs_have_file_names"
+			        }
+			      ]
+			    },
+			    "files_load_SSIS_log_has_error_filter": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load SSIS Logs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_SSIS_log": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log"
+			          }
+			        },
+			        "files_load_SSIS_log.error_filter": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log.error_filter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_SSIS_log"
+			            },
+			            "Object": {
+			              "Role": "files_load_SSIS_log.error_filter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "files_load_SSIS_logs_have_error_filters"
+			        }
+			      ]
+			    },
+			    "files_load_SSIS_log_has_creation_date": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load SSIS Logs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_SSIS_log": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log"
+			          }
+			        },
+			        "files_load_SSIS_log.creation_date": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log.creation_date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_SSIS_log"
+			            },
+			            "Object": {
+			              "Role": "files_load_SSIS_log.creation_date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "files_load_SSIS_logs_have_creation_dates"
+			        }
+			      ]
+			    },
+			    "files_load_SSIS_log_has_description": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load SSIS Logs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_SSIS_log": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log"
+			          }
+			        },
+			        "files_load_SSIS_log.description": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log.description"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_SSIS_log"
+			            },
+			            "Object": {
+			              "Role": "files_load_SSIS_log.description"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "files_load_SSIS_logs_have_descriptions"
+			        }
+			      ]
+			    },
+			    "files_load_SSIS_log_has_error": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load SSIS Logs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_SSIS_log": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log"
+			          }
+			        },
+			        "files_load_SSIS_log.error": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log.error"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_SSIS_log"
+			            },
+			            "Object": {
+			              "Role": "files_load_SSIS_log.error"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "files_load_SSIS_logs_have_errors"
+			        }
+			      ]
+			    },
+			    "files_load_SSIS_log_has_log": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load SSIS Logs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_SSIS_log": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log"
+			          }
+			        },
+			        "files_load_SSIS_log.log": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log.log"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_SSIS_log"
+			            },
+			            "Object": {
+			              "Role": "files_load_SSIS_log.log"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "files_load_SSIS_logs_have_logs"
+			        }
+			      ]
+			    },
+			    "files_load_log_has_error": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load Log"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_log": {
+			          "Target": {
+			            "Entity": "files_load_log"
+			          }
+			        },
+			        "files_load_log.error": {
+			          "Target": {
+			            "Entity": "files_load_log.error"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_log"
+			            },
+			            "Object": {
+			              "Role": "files_load_log.error"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "files_load_logs_have_errors"
+			        }
+			      ]
+			    },
+			    "files_load_log_has_log": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load Log"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_log": {
+			          "Target": {
+			            "Entity": "files_load_log"
+			          }
+			        },
+			        "files_load_log.log": {
+			          "Target": {
+			            "Entity": "files_load_log.log"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_log"
+			            },
+			            "Object": {
+			              "Role": "files_load_log.log"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "files_load_logs_have_logs"
+			        }
+			      ]
+			    },
+			    "files_load_log_has_description": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load Log"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_log": {
+			          "Target": {
+			            "Entity": "files_load_log"
+			          }
+			        },
+			        "files_load_log.description": {
+			          "Target": {
+			            "Entity": "files_load_log.description"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_log"
+			            },
+			            "Object": {
+			              "Role": "files_load_log.description"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "files_load_logs_have_descriptions"
+			        }
+			      ]
+			    },
+			    "files_load_SSIS_log_creation_date_has_date_hierarchy": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load SSIS Logs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_SSIS_log.creation_date": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log.creation_date"
+			          }
+			        },
+			        "files_load_SSIS_log.creation_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log.creation_date.date_hierarchy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_SSIS_log.creation_date"
+			            },
+			            "Object": {
+			              "Role": "files_load_SSIS_log.creation_date.date_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "creation_dates_have_Fecha_Carga_date_hierarchies"
+			        }
+			      ]
+			    },
+			    "files_load_SSIS_log_creation_date_date_hierarchy_has_files_load_SSIS_log_creation_date_year": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load SSIS Logs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_SSIS_log.creation_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log.creation_date.date_hierarchy"
+			          }
+			        },
+			        "files_load_SSIS_log.creation_date.year": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log.creation_date.year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_SSIS_log.creation_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "files_load_SSIS_log.creation_date.year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Fecha_Carga_date_hierarchies_have_Fecha_Carga_years"
+			        }
+			      ]
+			    },
+			    "files_load_SSIS_log_creation_date_date_hierarchy_has_files_load_SSIS_log_creation_date_quarter": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load SSIS Logs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_SSIS_log.creation_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log.creation_date.date_hierarchy"
+			          }
+			        },
+			        "files_load_SSIS_log.creation_date.quarter": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log.creation_date.quarter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_SSIS_log.creation_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "files_load_SSIS_log.creation_date.quarter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Fecha_Carga_date_hierarchies_have_Fecha_Carga_quarters"
+			        }
+			      ]
+			    },
+			    "files_load_SSIS_log_creation_date_date_hierarchy_has_files_load_SSIS_log_creation_date_month": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load SSIS Logs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_SSIS_log.creation_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log.creation_date.date_hierarchy"
+			          }
+			        },
+			        "files_load_SSIS_log.creation_date.month": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log.creation_date.month"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_SSIS_log.creation_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "files_load_SSIS_log.creation_date.month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Fecha_Carga_date_hierarchies_have_Fecha_Carga_months"
+			        }
+			      ]
+			    },
+			    "files_load_SSIS_log_creation_date_date_hierarchy_has_files_load_SSIS_log_creation_date_day": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load SSIS Logs"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_SSIS_log.creation_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log.creation_date.date_hierarchy"
+			          }
+			        },
+			        "files_load_SSIS_log.creation_date.day": {
+			          "Target": {
+			            "Entity": "files_load_SSIS_log.creation_date.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_SSIS_log.creation_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "files_load_SSIS_log.creation_date.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Fecha_Carga_date_hierarchies_have_Fecha_Carga_days"
+			        }
+			      ]
+			    },
+			    "files_load_log_creation_date_has_date_hierarchy": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load Log"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_log.creation_date": {
+			          "Target": {
+			            "Entity": "files_load_log.creation_date"
+			          }
+			        },
+			        "files_load_log.creation_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "files_load_log.creation_date.date_hierarchy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_log.creation_date"
+			            },
+			            "Object": {
+			              "Role": "files_load_log.creation_date.date_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "creation_dates_have_Fecha_Carga_date_hierarchies1"
+			        }
+			      ]
+			    },
+			    "files_load_log_creation_date_date_hierarchy_has_files_load_log_creation_date_year": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load Log"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_log.creation_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "files_load_log.creation_date.date_hierarchy"
+			          }
+			        },
+			        "files_load_log.creation_date.year": {
+			          "Target": {
+			            "Entity": "files_load_log.creation_date.year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_log.creation_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "files_load_log.creation_date.year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Fecha_Carga_date_hierarchies_have_Fecha_Carga_years1"
+			        }
+			      ]
+			    },
+			    "files_load_log_creation_date_date_hierarchy_has_files_load_log_creation_date_quarter": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load Log"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_log.creation_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "files_load_log.creation_date.date_hierarchy"
+			          }
+			        },
+			        "files_load_log.creation_date.quarter": {
+			          "Target": {
+			            "Entity": "files_load_log.creation_date.quarter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_log.creation_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "files_load_log.creation_date.quarter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Fecha_Carga_date_hierarchies_have_Fecha_Carga_quarters1"
+			        }
+			      ]
+			    },
+			    "files_load_log_creation_date_date_hierarchy_has_files_load_log_creation_date_month": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load Log"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_log.creation_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "files_load_log.creation_date.date_hierarchy"
+			          }
+			        },
+			        "files_load_log.creation_date.month": {
+			          "Target": {
+			            "Entity": "files_load_log.creation_date.month"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_log.creation_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "files_load_log.creation_date.month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Fecha_Carga_date_hierarchies_have_Fecha_Carga_months1"
+			        }
+			      ]
+			    },
+			    "files_load_log_creation_date_date_hierarchy_has_files_load_log_creation_date_day": {
+			      "Binding": {
+			        "ConceptualEntity": "Files Load Log"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "files_load_log.creation_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "files_load_log.creation_date.date_hierarchy"
+			          }
+			        },
+			        "files_load_log.creation_date.day": {
+			          "Target": {
+			            "Entity": "files_load_log.creation_date.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "files_load_log.creation_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "files_load_log.creation_date.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Fecha_Carga_date_hierarchies_have_Fecha_Carga_days1"
+			        }
+			      ]
+			    }
+			  },
+			  "Agents": {
+			    "Internal": {
+			      "Version": "1.1.0"
 			    }
 			  }
 			}
